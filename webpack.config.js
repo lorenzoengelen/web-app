@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const NpmInstallPlugin = require('npm-install-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanPlugin = require('clean-webpack-plugin');
 
 const pkg = require('./package.json');
 
@@ -66,6 +67,7 @@ if (TARGET === 'start' || !TARGET) {
       port: process.env.PORT
     },
     plugins: [
+      new CleanPlugin([PATHS.build]),
       new webpack.HotModuleReplacementPlugin(),
       new NpmInstallPlugin({
         save: true
