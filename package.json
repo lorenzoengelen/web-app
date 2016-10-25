@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Peerdeco/web-app#readme",
   "devDependencies": {
+    "strip-loader": "^0.1.2",
     "webpack": "^1.13.2"
   },
   "dependencies": {
