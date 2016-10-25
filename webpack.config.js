@@ -3,6 +3,8 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const NpmInstallPlugin = require('npm-install-webpack-plugin');
 
+const pkg = require('./package.json');
+
 const TARGET = process.env.npm_lifecycle_event;
 
 // expand Babel configuration to include necessary plugins during development
@@ -22,7 +24,7 @@ const common = {
   },
   output: {
     path: PATHS.build,
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
   module: {
     loaders: [
@@ -65,7 +67,15 @@ if (TARGET === 'start' || !TARGET) {
 
 if (TARGET === 'build') {
   module.exports = merge(common, {
+    // separate entry chunk for project vendor level dependencies
+    entry: {
+      vendor: Object.keys(pkg.dependencies)
+    },
     plugins: [
+    // extract vendor and manifest files
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendor', 'manifest']
+    }),
     // build React in an optimized manner
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"'
