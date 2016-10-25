@@ -18,5 +18,9 @@
   "homepage": "https://github.com/Peerdeco/web-app#readme",
   "devDependencies": {
     "webpack": "^1.13.2"
+  },
+  "dependencies": {
+    "babel-core": "^6.18.0",
+    "babel-loader": "^6.2.5"
   }
 }
