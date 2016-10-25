@@ -27,6 +27,8 @@
     "babel-preset-react": "^6.16.0",
     "jshint": "^2.9.4",
     "jshint-loader": "^0.8.3",
-    "node-libs-browser": "^1.0.0"
+    "node-libs-browser": "^1.0.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2"
   }
 }
