@@ -4,5 +4,26 @@ module.exports = {
     path: __dirname + '/client/dist',
     filename: 'bundle.js'
   },
-  watch: true
+  module: {
+    preLoaders: [
+      {
+        test: /\.js$/,
+        include: __dirname + '/client/src',
+        loader: 'jshint-loader'
+      }
+    ],
+    loaders: [
+      {
+        test: /\.js?$/,
+        include: __dirname + '/client/src',
+        loader: 'babel-loader',
+        query: {
+          presets: ['react', 'es2015']
+        }
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['', '.js']
+  }
 };
