@@ -1,29 +1,52 @@
-module.exports = {
-  entry: [__dirname + '/client/src/index'],
+const path = require('path');
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+
+const TARGET = process.env.npm_lifecycle_event;
+
+const PATHS = {
+  app: path.join(__dirname, 'app'),
+  build: path.join(__dirname, 'build')
+};
+
+const common = {
+  entry: {
+    app: PATHS.app
+  },
   output: {
-    path: __dirname + '/client/dist',
+    path: PATHS.build,
     filename: 'bundle.js'
   },
   module: {
-    preLoaders: [
-      {
-        test: [/\.js$/],
-        include: __dirname + '/client/src',
-        loader: 'jshint-loader'
-      }
-    ],
     loaders: [
       {
-        test: [/\.js?$/],
-        include: __dirname + '/client/src',
-        loader: 'babel-loader',
-        query: {
-          presets: ['react', 'es2015']
-        }
+        test: /\.css$/,
+        loaders: ['style', 'css'],
+        include: PATHS.app
       }
     ]
-  },
-  resolve: {
-    extensions: ['', '.js']
   }
 };
+
+// default configuration
+if (TARGET === 'start' || !TARGET) {
+  module.exports = merge(common, {
+    devServer: {
+      contentBase: PATHS.build,
+      historyApiFallback: true, // enable HTML5 based routing
+      hot: true,
+      inline: true,
+      progress: true,
+      stats: 'errors-only', // display errors only
+      host: process.env.HOST,
+      port: process.env.PORT
+    },
+    plugins: [
+      new webpack.HotModuleReplacementPlugin()
+    ]
+  });
+}
+
+if (TARGET === 'build') {
+  module.exports = merge(common, {});
+}
