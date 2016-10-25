@@ -1,3 +1,6 @@
 node_modules
 
 /build/bundle.js
+/build/app.js
+/build/manifest.js
+/build/vendor.js
