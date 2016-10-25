@@ -7,14 +7,14 @@ module.exports = {
   module: {
     preLoaders: [
       {
-        test: /\.js$/,
+        test: [/\.js$/],
         include: __dirname + '/client/src',
         loader: 'jshint-loader'
       }
     ],
     loaders: [
       {
-        test: /\.js?$/,
+        test: [/\.js?$/],
         include: __dirname + '/client/src',
         loader: 'babel-loader',
         query: {
