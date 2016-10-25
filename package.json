@@ -23,6 +23,7 @@
     "babel-core": "^6.18.0",
     "babel-loader": "^6.2.5",
     "jshint": "^2.9.4",
-    "jshint-loader": "^0.8.3"
+    "jshint-loader": "^0.8.3",
+    "node-libs-browser": "^1.0.0"
   }
 }
