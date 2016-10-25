@@ -15,12 +15,14 @@ process.env.BABEL_ENV = TARGET;
 
 const PATHS = {
   app: path.join(__dirname, 'app'),
-  build: path.join(__dirname, 'build')
+  build: path.join(__dirname, 'build'),
+  style: path.join(__dirname, 'app/styles/main.css')
 };
 
 const common = {
   entry: {
-    app: PATHS.app
+    app: PATHS.app,
+    style: PATHS.style
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
