@@ -4,6 +4,7 @@ const merge = require('webpack-merge');
 const NpmInstallPlugin = require('npm-install-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const pkg = require('./package.json');
 
@@ -30,11 +31,11 @@ const common = {
   },
   module: {
     loaders: [
-      {
-        test: /\.css$/,
-        loaders: ['style', 'css'],
-        include: PATHS.app
-      },
+      // {
+      //   test: /\.css$/,
+      //   loaders: ['style', 'css'],
+      //   include: PATHS.app
+      // },
       {
         test: /\.jsx?$/,
         loaders: ['babel?cacheDirectory'], // enable caching for improved performance
@@ -66,8 +67,17 @@ if (TARGET === 'start' || !TARGET) {
       host: process.env.HOST,
       port: process.env.PORT
     },
+    module: {
+      loaders: [
+        // development specific CSS setup
+        {
+          test: /\.css$/,
+          loaders: ['style', 'css'],
+          include: PATHS.app
+        }
+      ]
+    },
     plugins: [
-      new CleanPlugin([PATHS.build]),
       new webpack.HotModuleReplacementPlugin(),
       new NpmInstallPlugin({
         save: true
@@ -88,7 +98,20 @@ if (TARGET === 'build') {
       filename: '[name].[chunkhash].js',
       chunkFilename: '[chunkhash].js'
     },
+    module: {
+      loaders: [
+        // extract CSS during build
+        {
+          test: /\.css$/,
+          loader: ExtractTextPlugin.extract('style', 'css'),
+          include: PATHS.app
+        }
+      ]
+    },
     plugins: [
+    new CleanPlugin([PATHS.build]),
+    // extract CSS
+    new ExtractTextPlugin('[name].[chunkhash].css'),
     // extract vendor and manifest files
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest']
