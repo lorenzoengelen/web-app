@@ -1,3 +1,7 @@
-document.write('testing webpack');
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 
-console.log('application loaded');
+ReactDOM.render(
+  <div>Testing this on the DOM</div>,
+  document.body
+);
