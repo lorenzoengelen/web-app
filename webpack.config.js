@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const NpmInstallPlugin = require('npm-install-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const pkg = require('./package.json');
 
@@ -39,7 +40,15 @@ const common = {
         include: PATHS.app
       }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'node_modules/html-webpack-template/index.ejs',
+      title: 'Peerdeco',
+      appMountId: 'app',
+      inject: false
+    })
+  ]
 };
 
 // default configuration
@@ -47,7 +56,7 @@ if (TARGET === 'start' || !TARGET) {
   module.exports = merge(common, {
     devtool: 'eval-source-map',
     devServer: {
-      contentBase: PATHS.build,
+      // contentBase: PATHS.build,
       historyApiFallback: true, // enable HTML5 based routing
       hot: true,
       inline: true,
