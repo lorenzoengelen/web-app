@@ -16,7 +16,8 @@ process.env.BABEL_ENV = TARGET;
 const PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build'),
-  style: path.join(__dirname, 'app/styles/main.css')
+  style: path.join(__dirname, 'app/styles/main.css'),
+  test: path.join(__dirname, 'test')
 };
 
 const common = {
@@ -33,11 +34,6 @@ const common = {
   },
   module: {
     loaders: [
-      // {
-      //   test: /\.css$/,
-      //   loaders: ['style', 'css'],
-      //   include: PATHS.app
-      // },
       {
         test: /\.jsx?$/,
         loaders: ['babel?cacheDirectory'], // enable caching for improved performance
@@ -58,6 +54,9 @@ const common = {
 // default configuration
 if (TARGET === 'start' || !TARGET) {
   module.exports = merge(common, {
+    entry: {
+      style: PATHS.style
+    },
     devtool: 'eval-source-map',
     devServer: {
       // contentBase: PATHS.build,
@@ -92,7 +91,8 @@ if (TARGET === 'build' || TARGET === 'stats') {
   module.exports = merge(common, {
     // separate entry chunk for project vendor level dependencies
     entry: {
-      vendor: Object.keys(pkg.dependencies)
+      vendor: Object.keys(pkg.dependencies),
+      style: PATHS.style
     },
     // adding hashes to filenames
     output: {
@@ -128,5 +128,32 @@ if (TARGET === 'build' || TARGET === 'stats') {
       }
     })
     ]
+  });
+}
+
+if (TARGET === 'test' || TARGET === 'tdd') {
+  module.exports = merge(common, {
+    devtool: 'inline-source-map',
+    resolve: {
+      alias: {
+        'app': PATHS.app
+      }
+    },
+    module: {
+      preLoaders: [
+        {
+          test: /\.jsx?/,
+          loaders: ['isparta-instrumenter'],
+          include: PATHS.app
+        }
+      ],
+      loaders: [
+        {
+          test: /\.jsx?/,
+          loaders: ['babel?cacheDirectory'],
+          include: PATHS.test
+        }
+      ]
+    }
   });
 }
