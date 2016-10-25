@@ -88,7 +88,7 @@ if (TARGET === 'start' || !TARGET) {
   });
 }
 
-if (TARGET === 'build') {
+if (TARGET === 'build' || TARGET === 'stats') {
   module.exports = merge(common, {
     // separate entry chunk for project vendor level dependencies
     entry: {
