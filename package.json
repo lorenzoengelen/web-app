@@ -40,6 +40,7 @@
     "clean-webpack-plugin": "^0.1.13",
     "css-loader": "^0.25.0",
     "eslint": "^3.8.1",
+    "eslint-loader": "^1.6.0",
     "eslint-plugin-react": "^6.4.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.24.0",
