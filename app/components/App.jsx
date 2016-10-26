@@ -3,6 +3,8 @@ import Note from './Note.jsx';
 
 export default class App extends Component {
   render() {
-    return <Note />;
+    return (
+      <Note />
+    );
   }
 }
