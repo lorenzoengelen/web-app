@@ -33,6 +33,13 @@ const common = {
     filename: '[name].js'
   },
   module: {
+    preLoaders: [
+      {
+        test: /\.js?$/,
+        loaders: ['jshint'],
+        include: PATHS.app
+      }
+    ],
     loaders: [
       {
         test: /\.jsx?$/,
