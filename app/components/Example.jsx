@@ -18,7 +18,7 @@ class Example extends Component {
         <button className='delete' onClick={this.props.onDelete}>Delete</button>
       </div>
     );
-  };
-};
+  }
+}
 
 export default Example;
