@@ -1,10 +1,4 @@
 {
-  /*
-   * ENVIRONMENTS
-   * =================
-   */
-
-  // Define globals exposed by modern browsers.
   "browser": true,
 
   // Define globals exposed by jQuery.
@@ -14,7 +8,7 @@
   "node": true,
 
   // Allow ES6.
-  "esversion": 6,
+  "esnext": true,
 
   /*
    * ENFORCING OPTIONS
