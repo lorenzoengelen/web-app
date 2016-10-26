@@ -42,7 +42,7 @@ const common = {
       },
       {
         test: /\.jsx?$/,
-        loaders: ['eslint'],
+        loaders: ['eslint', 'jscs'],
         include: PATHS.app
       },
       {
