@@ -5,6 +5,7 @@
 
   "requireCurlyBraces": true,
   "requireParenthesesAroundIIFE": true,
+  "requireLineFeedAtFileEnd": false,
 
   "maximumLineLength": 120,
   "validateLineBreaks": "LF",
