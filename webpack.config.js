@@ -35,6 +35,11 @@ const common = {
   module: {
     preLoaders: [
       {
+        test: /\.jsx?$/,
+        loaders: ['eslint'],
+        include: PATHS.app
+      },
+      {
         test: /\.js?$/,
         loaders: ['jshint'],
         include: PATHS.app
