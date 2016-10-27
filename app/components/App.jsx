@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import Note from './Note.jsx';
 
 export default class App extends Component {
   render() {
     return (
-      <Note />
+      <div>
+        <h1>Getting closer...</h1>
+        <button className='btn btn-primary'>button</button>
+      </div>
     );
   }
 }
