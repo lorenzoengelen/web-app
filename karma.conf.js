@@ -1,8 +1,12 @@
+const webpack = require('./webpack.config');
+
 module.exports = function karmaConfig(config) {
   config.set({
     frameworks: [
       // mocha testing framework
-      'mocha'
+      'mocha',
+      // chai assertion library
+      'chai'
     ],
     reporters: [
       // set reporter to print detailed results to console
@@ -31,7 +35,7 @@ module.exports = function karmaConfig(config) {
       type: 'html'
     },
     // test webpack config
-    webpack: require('./webpack.config'),
+    webpack: webpack,
     // hide webpack build information from output 
     webpackMiddleware: {
       noInfo: true
