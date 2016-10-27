@@ -206,6 +206,13 @@ if (TARGET === 'test' || TARGET === 'tdd') {
           include: PATHS.test
         }
       ]
+    },
+    // using enzyme with webpack
+    externals: {
+      'cheerio': 'window',
+      'react/addons': true,
+      'react/lib/ExecutionEnvironment': true,
+      'react/lib/ReactContext': true
     }
   });
 }
