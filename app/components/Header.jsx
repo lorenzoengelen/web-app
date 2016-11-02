@@ -26,7 +26,7 @@ class Header extends Component {
             classID='navbar-collapse-1'>
             <ul className='nav navbar-nav navbar-right'>
               <li>
-                <button type='button' className='btn btn-primary navbar-btn sell-furniture'>Verkoop Meubilair</button>
+                <button type='button' className='btn btn-danger navbar-btn sell-furniture'>Verkoop Meubilair</button>
               </li>
               <li><a href='#' className='login'>Inloggen</a></li>
               <li><a href='#' className='wishlist'>Verlanglijst <span className='badge'>0</span></a></li>
