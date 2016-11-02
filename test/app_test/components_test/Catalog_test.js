@@ -9,40 +9,47 @@ import Catalog from '../../../app/components/Catalog.jsx';
 
 describe('<Catalog />', () => {
 
-  it('has sofas "banken"', () => {
+  const wrapper = shallow(<Catalog />);
+  const categories = wrapper.find('.catalog-item').map(n => n.text());
 
+  it('has item new "nieuw"', () => {
+    expect(categories).to.include('Nieuw');
   });
 
-  it('has chairs "stoelen"', () => {
-
+  it('has item sofas "banken"', () => {
+    expect(categories).to.include('Banken');
   });
 
-  it('has tables "tafels"', () => {
-
+  it('has item chairs "stoelen"', () => {
+    expect(categories).to.include('Stoelen');
   });
 
-  it('has beds "bedden"', () => {
-
+  it('has item tables "tafels"', () => {
+    expect(categories).to.include('Tafels');
   });
 
-  it('has storage "kasten"', () => {
-
+  it('has item beds "bedden"', () => {
+    expect(categories).to.include('Bedden');
   });
 
-  it('has lighting "verlichting"', () => {
-
+  it('has item storage "kasten"', () => {
+    expect(categories).to.include('Kasten');
   });
 
-  it('has decoration "decoratie"', () => {
-
+  it('has item lighting "verlichting"', () => {
+    expect(categories).to.include('Verlichting');
   });
 
-  it('has office "kantoor"', () => {
-
+  it('has item decoration "decoratie"', () => {
+    expect(categories).to.include('Decoratie');
   });
 
-  it('has children furniture "kinderen"', () => {
+  it('has item office "kantoor"', () => {
+    expect(categories).to.include('Kantoor');
+  });
 
+  it('has item children furniture "kinderen"', () => {
+    expect(categories).to.include('Kinderen');
   });
 
 });
