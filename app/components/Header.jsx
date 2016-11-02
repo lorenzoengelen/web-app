@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 class Header extends Component {
   render() {
     return (
-      <nav className='navbar navbar-default'>
-        <div className='container-fluid'>
+      <header className='navbar navbar-default'>
+        <div className='container'>
 
           <div className='navbar-header'>
             <button
@@ -23,14 +23,19 @@ class Header extends Component {
 
           <div
             className='collapse navbar-collapse'
-            id='navbar-collapse-1'>
+            classID='navbar-collapse-1'>
             <ul className='nav navbar-nav navbar-right'>
-              Hello
+              <li>
+                <button type='button' className='btn btn-primary navbar-btn sell-furniture'>Verkoop Meubilair</button>
+              </li>
+              <li><a href='#' className='login'>Inloggen</a></li>
+              <li><a href='#' className='wishlist'>Verlanglijst</a></li>
+              <li><a href='#' className='shopping-cart'>Winkelmand</a></li>
             </ul>
           </div>
 
         </div>
-      </nav>
+      </header>
     );
   }
 }
