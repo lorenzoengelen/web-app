@@ -18,7 +18,8 @@ const PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build'),
   style: path.join(__dirname, 'app/styles/main.css'),
-  test: path.join(__dirname, 'test')
+  test: path.join(__dirname, 'test'),
+  bootstrap: path.join(__dirname, 'node_modules/bootstrap/dist/css/bootstrap.min.css')
 };
 
 const common = {
@@ -27,7 +28,7 @@ const common = {
     style: PATHS.style
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', '.min.js', '.json', '.scss']
   },
   output: {
     path: PATHS.build,
@@ -56,7 +57,20 @@ const common = {
         test: /\.jsx?$/,
         loaders: ['babel?cacheDirectory'], // enable caching for improved performance
         include: PATHS.app
-      }
+      },
+      // bootstrap loaders
+      {
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'postcss', 'sass'],
+      },
+      {
+        test: /\.(woff|woff2|ttf|svg|eot)/,
+        loader: 'url?limit=100000',
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader',
+      },
     ]
   },
   postcss: function() {
@@ -72,6 +86,10 @@ const common = {
       title: 'Peerdeco',
       appMountId: 'app',
       inject: false
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery"',
+      jQuery: 'jquery'
     })
   ]
 };
@@ -80,7 +98,8 @@ const common = {
 if (TARGET === 'start' || !TARGET) {
   module.exports = merge(common, {
     entry: {
-      style: PATHS.style
+      style: PATHS.style,
+      bootstrap: PATHS.bootstrap
     },
     devtool: 'eval-source-map',
     devServer: {
@@ -96,6 +115,11 @@ if (TARGET === 'start' || !TARGET) {
     module: {
       loaders: [
         // development specific CSS setup
+        {
+          test: /\.css$/,
+          loaders: ['style', 'css'],
+          include: PATHS.bootstrap
+        },
         {
           test: /\.css$/,
           loaders: ['style', 'css'],
@@ -117,7 +141,8 @@ if (TARGET === 'build' || TARGET === 'stats') {
     // separate entry chunk for project vendor level dependencies
     entry: {
       vendor: Object.keys(pkg.dependencies),
-      style: PATHS.style
+      style: PATHS.style,
+      bootstrap: PATHS.bootstrap
     },
     // adding hashes to filenames
     output: {
@@ -127,12 +152,18 @@ if (TARGET === 'build' || TARGET === 'stats') {
     },
     module: {
       loaders: [
+        // extract bootstrap CSS
+        {
+          test: /\.css$/,
+          loader: ExtractTextPlugin.extract('style', 'css'),
+          include: PATHS.bootstrap
+        },
         // extract CSS during build
         {
           test: /\.css$/,
           loader: ExtractTextPlugin.extract('style', 'css'),
           include: PATHS.app
-        }
+        },
       ]
     },
     plugins: [
@@ -161,10 +192,14 @@ if (TARGET === 'test' || TARGET === 'tdd') {
     devtool: 'inline-source-map',
     resolve: {
       alias: {
-        'app': PATHS.app
+        'app': PATHS.app,
+        sinon: path.join(__dirname, 'node_modules/sinon/pkg/sinon.js')
       }
     },
     module: {
+      noParse: [
+        /\/sinon\.js/,
+      ],
       preLoaders: [
         {
           test: /\.jsx?/,
@@ -178,7 +213,17 @@ if (TARGET === 'test' || TARGET === 'tdd') {
           loaders: ['babel?cacheDirectory'],
           include: PATHS.test
         }
-      ]
+      ],
+    },
+    // using enzyme with webpack
+    externals: {
+      'jsdom': 'window',
+      'cheerio': 'window',
+      sinon: 'sinon',
+      // 'react/addons': true,
+      'react/lib/ExecutionEnvironment': true,
+      'react/lib/ReactContext': true,
+      'text-encoding': 'window'
     }
   });
 }
