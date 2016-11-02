@@ -1,15 +1,25 @@
-import jsdom from 'jsdom';
-import { expect } from 'chai';
-import sinon from 'sinon';
-import TestUtils from 'react-addons-test-utils';
+import chai from 'chai';
+import chaiEnzyme from 'chai-enzyme';
+// import chaiJsx from 'chai-jsx';
+// import {jsdom} from 'jsdom';
 
-// testing environment to run like a browser in the command line
-global.document = jsdom.jsdom('<!doctype html><html><body></body></html');
-global.window = document.defaultView;
+chai.use(chaiEnzyme());
+// chai.use(chaiJsx);
 
-// export
-export {
-  expect,
-  sinon,
-  TestUtils
-};
+// global.document = jsdom('<!doctype html><html><body></body></html>');
+// global.window = document.defaultView;
+// global.navigator = global.window.navigator;
+
+// var jsdom = require('jsdom').jsdom;
+
+// global.document = jsdom('');
+// global.window = document.defaultView;
+// Object.keys(document.defaultView).forEach((property) => {
+//   if (typeof global[property] === 'undefined') {
+//     global[property] = document.defaultView[property];
+//   }
+// });
+
+// global.navigator = {
+//   userAgent: 'node.js'
+// };
