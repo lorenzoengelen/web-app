@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App.jsx';
+
+// components
+import Header from './components/Header.jsx';
 
 ReactDOM.render(
-  <App />,
+  <Header />,
   document.getElementById('app')
 );
