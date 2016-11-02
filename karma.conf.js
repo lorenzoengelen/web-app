@@ -1,44 +1,79 @@
-const webpack = require('./webpack.config');
+var path = require('path');
 
-module.exports = function karmaConfig(config) {
+module.exports = function(config) {
   config.set({
-    frameworks: [
-      // mocha testing framework
-      'mocha',
-      // chai assertion library
-      'chai'
-    ],
-    reporters: [
-      // set reporter to print detailed results to console
-      'spec',
-      // output code coverage files
-      'coverage'
-    ],
+    basePath: '',
+    frameworks: ['jasmine', 'chai', 'mocha'],
     files: [
-      // React.js requires bind and phantomjs does not support it
-      'node_modules/phantomjs-polyfill/bind-polyfill.js',
-      // grab all files in the test directory that contain _test.
-      'test/**/*_test.*'
+      'test/**/*.js'
     ],
+
     preprocessors: {
-      // convert files with webpack and load sourcemaps
-      'test/**/*_test.*': ['webpack', 'sourcemap']
+      // add webpack as preprocessor
+      'src/**/*.js': ['webpack', 'sourcemap'],
+      'test/**/*.js': ['webpack', 'sourcemap']
     },
-    browsers: [
-      // run tests using PhantomJS
-      'PhantomJS'
+
+    webpack: { //kind of a copy of your webpack config
+      devtool: 'inline-source-map', //just do inline source maps instead of the default
+      module: {
+        loaders: [
+          {
+            test: /\.js$/,
+            loader: 'babel',
+            exclude: path.resolve(__dirname, 'node_modules'),
+            query: {
+              presets: ['airbnb']
+            }
+          },
+          {
+            test: /\.jsx?$/,
+            loaders: ['babel?cacheDirectory'], // enable caching for improved performance
+            exclude: path.resolve(__dirname, 'node_modules')
+          },
+          {
+            test: /\.json$/,
+            loader: 'json-loader',
+            exclude: path.resolve(__dirname, 'node_modules')
+          },
+        ]
+      },
+      externals: {
+        jsdom: 'window',
+        cheerio: 'window',
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': 'window'
+      }
+    },
+
+    webpackServer: {
+      noInfo: true //please don't spam the console when running in karma!
+    },
+
+    plugins: [
+      'karma-chai',
+      'karma-chai-plugins',
+      'karma-mocha',
+      'karma-spec-reporter',
+      'karma-webpack',
+      'karma-jasmine',
+      'karma-sourcemap-loader',
+      'karma-chrome-launcher',
+      'karma-phantomjs-launcher'
     ],
-    singleRun: true,
-    // configure coverage reporter
-    coverageReporter: {
-      dir: 'build/coverage/',
-      type: 'html'
+
+
+    babelPreprocessor: {
+      options: {
+        presets: ['airbnb']
+      }
     },
-    // test webpack config
-    webpack: webpack,
-    // hide webpack build information from output 
-    webpackMiddleware: {
-      noInfo: true
-    }
-  });
+    reporters: ['spec'],
+    port: 9876,
+    colors: true,
+    logLevel: config.LOG_INFO,
+    autoWatch: true,
+    browsers: ['Chrome'],
+    singleRun: false,
+  })
 };
