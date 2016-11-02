@@ -66,7 +66,11 @@ const common = {
       {
         test: /\.(woff|woff2|ttf|svg|eot)/,
         loader: 'url?limit=100000',
-      }
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader',
+      },
     ]
   },
   postcss: function() {
@@ -188,10 +192,14 @@ if (TARGET === 'test' || TARGET === 'tdd') {
     devtool: 'inline-source-map',
     resolve: {
       alias: {
-        'app': PATHS.app
+        'app': PATHS.app,
+        sinon: path.join(__dirname, 'node_modules/sinon/pkg/sinon.js')
       }
     },
     module: {
+      noParse: [
+        /\/sinon\.js/,
+      ],
       preLoaders: [
         {
           test: /\.jsx?/,
@@ -205,14 +213,17 @@ if (TARGET === 'test' || TARGET === 'tdd') {
           loaders: ['babel?cacheDirectory'],
           include: PATHS.test
         }
-      ]
+      ],
     },
     // using enzyme with webpack
     externals: {
+      'jsdom': 'window',
       'cheerio': 'window',
-      'react/addons': true,
+      sinon: 'sinon',
+      // 'react/addons': true,
       'react/lib/ExecutionEnvironment': true,
-      'react/lib/ReactContext': true
+      'react/lib/ReactContext': true,
+      'text-encoding': 'window'
     }
   });
 }
