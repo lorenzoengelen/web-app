@@ -9,28 +9,30 @@ import Header from '../../../app/components/Header.jsx';
 
 describe('<Header />', () => {
 
-  it('renders as a <div>', () => {
-    const wrapper = shallow(<Header />);
-    expect(wrapper.type()).to.eql('div');
+  const wrapper = shallow(<Header />);
+
+  it('renders as a <nav>', () => {
+    expect(wrapper.type()).to.equal('header');
   });
 
-  it('testing something', () => {
-    const wrapper = shallow(<Header />);
-    expect(wrapper.find('span')).to.have.className('child');
-  })
-
-  it('should render something', () => {
-    const wrapper = shallow(<Header />);
-    expect(wrapper.containsAllMatchingElements([
-      <InputArea />,
-      <BeerList />
-    ])).to.equal(true);
+  it('renders a logo', () => {
+    expect(wrapper.find('.navbar-brand')).to.have.length(1);
   });
 
-  // testing state
-  it('should start with an empty list', () => {
-    const wrapper = shallow(<Header />);
-    expect(wrapper.state('beers')).to.eql([]);
+  it('renders a sell furniture button', () => {
+    expect(wrapper.find('.sell-furniture')).to.have.length(1);
+  });
+
+  it('renders a login button', () => {
+    expect(wrapper.find('.login')).to.have.length(1);
+  });
+
+  it('renders a wishlist', () => {
+    expect(wrapper.find('.wishlist')).to.have.length(1);
+  });
+
+  it('renders a shopping cart', () => {
+    expect(wrapper.find('.shopping-cart')).to.have.length(1);
   });
 
 });
