@@ -112,8 +112,12 @@ class Catalog extends Component {
     this.setState({show: e.target.id});
   }
 
-  handleMouseOut(e) {
-    this.setState({show: ''});
+  handleOnClick(e) {
+    if (this.state.show) {
+      this.setState({show: ''});
+    } else {
+      this.setState({show: e.target.id});
+    }
   }
 
   renderCategories() {
@@ -125,7 +129,8 @@ class Catalog extends Component {
           key={i}
           id={category}
           onMouseOver={this.handleMouseOver.bind(this)}
-          onMouseOut={this.handleMouseOut.bind(this)}
+          onClick={this.handleOnClick.bind(this)}
+          onToggle={() => {}}
           open={this.state.show === category}
           noCaret>
           {this.renderSubcategories(subcategories)}
