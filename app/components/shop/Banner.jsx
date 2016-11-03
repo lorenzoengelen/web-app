@@ -5,6 +5,7 @@ class Banner extends Component {
     return (
       <div className='banner'>
         <h3>This is the banner</h3>
+        <img src={require('../../assets/img/office.jpg')} className='img-responsive' alt='Responsive image'/>
       </div>
     );
   }
