@@ -64,7 +64,7 @@ const common = {
         loaders: ['style', 'css', 'postcss', 'sass'],
       },
       {
-        test: /\.(woff|woff2|ttf|svg|eot)/,
+        test: /\.(woff|woff2|ttf|svg|eot|jpe?g)/,
         loader: 'url?limit=100000',
       },
       {
