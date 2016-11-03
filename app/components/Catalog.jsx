@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import { Nav, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Nav, NavDropdown, NavItem, MenuItem } from 'react-bootstrap';
 import _ from 'lodash';
 
 const categories = {
   1: {
-    category: 'Nieuw'
-  },
-  2: {
     category: 'Banken',
     subcategories: [
       'Hoekbanken',
@@ -17,7 +14,7 @@ const categories = {
       'Eetkamerbank'
     ]
   },
-  3: {
+  2: {
     category: 'Stoelen',
     subcategories: [
       'Armstoelen',
@@ -28,7 +25,7 @@ const categories = {
       'Poefen'
     ]
   },
-  4: {
+  3: {
     category: 'Tafels',
     subcategories: [
       'Salontafels',
@@ -39,7 +36,7 @@ const categories = {
       'Bijzettafels'
     ]
   },
-  5: {
+  4: {
     category: 'Bedden',
     subcategories: [
       'Bedden',
@@ -50,7 +47,7 @@ const categories = {
       'Kinderbedden'
     ]
   },
-  6: {
+  5: {
     category: 'Kasten',
     subcategories: [
       'Ladekasten',
@@ -64,7 +61,7 @@ const categories = {
       'Dressiors'
     ]
   },
-  7: {
+  6: {
     category: 'Verlichting',
     subcategories: [
       'Kroonluchters',
@@ -77,7 +74,7 @@ const categories = {
       'Inbouwlampen'
     ]
   },
-  8: {
+  7: {
     category: 'Decoratie',
     subcategories: [
       'Vloerkleden',
@@ -89,7 +86,7 @@ const categories = {
       'Woonkussen'
     ]
   },
-  9: {
+  8: {
     category: 'Kindermeubilair',
     subcategories: [
       'Bedden',
@@ -156,6 +153,7 @@ class Catalog extends Component {
     return (
       <div className='container catalog'>
         <Nav bsStyle='tabs' justified>
+          <NavItem className='catalog-category' title='Nieuw'>Nieuw</NavItem>
           {this.renderCategories()}
         </Nav>
       </div>
