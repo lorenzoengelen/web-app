@@ -10,7 +10,7 @@ import Catalog from '../../../app/components/Catalog.jsx';
 describe('<Catalog />', () => {
 
   const wrapper = shallow(<Catalog />);
-  const categories = wrapper.find('.catalog-item').map(item => {
+  const categories = wrapper.find('.catalog-category').map(item => {
     return item.prop('title');
   });
 
