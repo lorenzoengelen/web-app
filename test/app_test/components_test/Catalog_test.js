@@ -10,7 +10,9 @@ import Catalog from '../../../app/components/Catalog.jsx';
 describe('<Catalog />', () => {
 
   const wrapper = shallow(<Catalog />);
-  const categories = wrapper.find('.catalog-item').map(n => n.text());
+  const categories = wrapper.find('.catalog-item').map(item => {
+    return item.prop('title');
+  });
 
   it('has item new "nieuw"', () => {
     expect(categories).to.include('Nieuw');
