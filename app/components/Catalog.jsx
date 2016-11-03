@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Nav, NavDropdown, NavItem, MenuItem } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import _ from 'lodash';
 
 const categories = {
@@ -120,18 +121,19 @@ class Catalog extends Component {
   renderCategories() {
     return _.map(categories, ({category, subcategories}, i) => {
       return (
-        <NavDropdown
-          className='catalog-category'
-          title={category}
-          key={i}
-          id={category}
-          onMouseOver={this.handleMouseOver.bind(this)}
-          onClick={this.handleOnClick.bind(this)}
-          onToggle={() => {}}
-          open={this.state.show === category}
-          noCaret>
-          {this.renderSubcategories(subcategories)}
-        </NavDropdown>
+        <LinkContainer key={i} to={{pathname: `/shop/${category}`}}>
+          <NavDropdown
+            className='catalog-category'
+            title={category}
+            id={category}
+            onMouseOver={this.handleMouseOver.bind(this)}
+            onClick={this.handleOnClick.bind(this)}
+            onToggle={() => {}}
+            open={this.state.show === category}
+            noCaret>
+            {this.renderSubcategories(subcategories)}
+          </NavDropdown>
+        </LinkContainer>
       );
     });
   }
@@ -139,12 +141,13 @@ class Catalog extends Component {
   renderSubcategories(subcategories) {
     return _.map(subcategories, (subcategory, i) => {
       return (
-        <MenuItem
-          className='catalog-subcategory'
-          eventKey={subcategory}
-          key={i}>
-          {subcategory}
-        </MenuItem>
+        <LinkContainer key={i} to={{pathname: `/shop/${subcategory}`}}>
+          <MenuItem
+            className='catalog-subcategory'
+            eventKey={subcategory}>
+            {subcategory}
+          </MenuItem>
+        </LinkContainer>
       );
     });
   }
@@ -153,7 +156,9 @@ class Catalog extends Component {
     return (
       <div className='container catalog'>
         <Nav bsStyle='tabs' justified>
-          <NavItem className='catalog-category' title='Nieuw'>Nieuw</NavItem>
+          <LinkContainer to={{pathname: '/shop/Nieuw'}}>
+            <NavItem className='catalog-category' title='Nieuw'>Nieuw</NavItem>
+          </LinkContainer>
           {this.renderCategories()}
         </Nav>
       </div>
