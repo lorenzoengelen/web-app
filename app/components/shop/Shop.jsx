@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 
+import Banner from './Banner.jsx';
+import Filters from './Filters.jsx';
+
 class Shop extends Component {
   render() {
     return (
-      <div className='shop'>The shop page is under construction</div>
+      <div className='shop container'>
+        <Banner />
+        <Filters />
+      </div>
     );
   }
 }
