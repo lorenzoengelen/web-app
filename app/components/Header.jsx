@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { LinkContainer } from 'react-router-bootstrap';
 
 class Header extends Component {
   render() {
@@ -18,7 +19,9 @@ class Header extends Component {
               <span className='icon-bar'></span>
               <span className='icon-bar'></span>
             </button>
-            <a className='navbar-brand' href='#'>Peerdeco</a>
+            <LinkContainer to={{pathname: '/'}}>
+              <a className='navbar-brand'>Peerdeco</a>
+            </LinkContainer>
           </div>
 
           <div
