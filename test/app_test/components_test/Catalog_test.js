@@ -46,12 +46,8 @@ describe('<Catalog />', () => {
     expect(categories).to.include('Decoratie');
   });
 
-  it('has item office "kantoor"', () => {
-    expect(categories).to.include('Kantoor');
-  });
-
-  it('has item children furniture "kinderen"', () => {
-    expect(categories).to.include('Kinderen');
+  it('has item children furniture "kindermeubilair"', () => {
+    expect(categories).to.include('Kindermeubilair');
   });
 
 });
