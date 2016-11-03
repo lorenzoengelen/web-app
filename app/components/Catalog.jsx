@@ -4,10 +4,10 @@ import _ from 'lodash';
 
 const categories = {
   1: {
-    name: 'Nieuw'
+    category: 'Nieuw'
   },
   2: {
-    name: 'Banken',
+    category: 'Banken',
     subcategories: [
       'Hoekbanken',
       'Tweezitsbank',
@@ -18,7 +18,7 @@ const categories = {
     ]
   },
   3: {
-    name: 'Stoelen',
+    category: 'Stoelen',
     subcategories: [
       'Armstoelen',
       'Eetkamerstoelen',
@@ -29,7 +29,7 @@ const categories = {
     ]
   },
   4: {
-    name: 'Tafels',
+    category: 'Tafels',
     subcategories: [
       'Salontafels',
       'Eetkamertafels',
@@ -40,7 +40,7 @@ const categories = {
     ]
   },
   5: {
-    name: 'Bedden',
+    category: 'Bedden',
     subcategories: [
       'Bedden',
       'Boxsprings',
@@ -51,7 +51,7 @@ const categories = {
     ]
   },
   6: {
-    name: 'Kasten',
+    category: 'Kasten',
     subcategories: [
       'Ladekasten',
       'Schoenenkasten',
@@ -65,7 +65,7 @@ const categories = {
     ]
   },
   7: {
-    name: 'Verlichting',
+    category: 'Verlichting',
     subcategories: [
       'Kroonluchters',
       'Hanglampen',
@@ -78,7 +78,7 @@ const categories = {
     ]
   },
   8: {
-    name: 'Decoratie',
+    category: 'Decoratie',
     subcategories: [
       'Vloerkleden',
       'Kapstokken',
@@ -90,7 +90,7 @@ const categories = {
     ]
   },
   9: {
-    name: 'Kindermeubilair',
+    category: 'Kindermeubilair',
     subcategories: [
       'Bedden',
       'Boxen',
@@ -103,14 +103,30 @@ const categories = {
 };
 
 class Catalog extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {show: ''};
+  }
+
+  handleMouseOver(e) {
+    this.setState({show: e.target.id});
+  }
+
+  handleMouseOut(e) {
+    this.setState({show: ''});
+  }
+
   renderCategories() {
-    return _.map(categories, ({name, subcategories}, i) => {
+    return _.map(categories, ({category, subcategories}, i) => {
       return (
         <NavDropdown
-          className='catalog-item'
-          title={name}
+          className='catalog-category'
+          title={category}
           key={i}
-          id={`dropdown-basic-${i}`}
+          id={category}
+          onMouseOver={this.handleMouseOver.bind(this)}
+          onMouseOut={this.handleMouseOut.bind(this)}
+          open={this.state.show === category}
           noCaret>
           {this.renderSubcategories(subcategories)}
         </NavDropdown>
@@ -122,6 +138,7 @@ class Catalog extends Component {
     return _.map(subcategories, (subcategory, i) => {
       return (
         <MenuItem
+          className='catalog-subcategory'
           eventKey={subcategory}
           key={i}>
           {subcategory}
