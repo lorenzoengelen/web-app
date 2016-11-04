@@ -3,6 +3,8 @@ import { Nav, NavDropdown, NavItem, MenuItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import _ from 'lodash';
 
+import { data } from '../data.js';
+
 const categories = {
   1: {
     category: 'Banken',
@@ -144,6 +146,7 @@ class Catalog extends Component {
         <LinkContainer key={i} to={{pathname: `/shop/${subcategory}`}}>
           <MenuItem
             className='catalog-subcategory'
+            onClick={this.handleOnClick.bind(this)}
             eventKey={subcategory}>
             {subcategory}
           </MenuItem>
@@ -153,6 +156,7 @@ class Catalog extends Component {
   }
 
   render() {
+    console.log(data);
     return (
       <div className='container catalog'>
         <Nav bsStyle='tabs' justified>
