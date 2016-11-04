@@ -1,4 +1,4 @@
-export const categories = [
+export const data = [
   {
     id: 1,
     name: 'sofas',
@@ -8,268 +8,226 @@ export const categories = [
   },
   {
     id: 101,
-    name: '',
-    en: '',
+    name: 'corner-sofas',
+    en: 'Corner Sofas',
     nl: 'Hoekbanken',
     parentId: 1
   },
   {
     id: 102,
-    name: '',
-    en: '',
-    nl: 'Tweezitsbanken',
+    name: 'two-seat-sofas',
+    en: 'Two-Seat Sofas',
+    nl: '2-zitsbanken',
     parentId: 1
   },
   {
     id: 103,
-    name: '',
-    en: '',
-    nl: 'Driezitsbanken',
+    name: 'three-seat-sofas',
+    en: 'Three-Seat Sofas',
+    nl: '3-zitsbanken',
     parentId: 1
   },
   {
     id: 104,
-    name: '',
-    en: '',
-    nl: 'Chaises',
+    name: 'chaise-longues',
+    en: 'Chaise Longues',
+    nl: 'Chaise Longues',
     parentId: 1
   },
   {
     id: 105,
-    name: '',
-    en: '',
-    nl: 'Slaapbanken',
-    parentId: 1
-  },
-  {
-    id: 106,
-    name: '',
-    en: '',
-    nl: 'Eetkamerbanken',
+    name: 'footstools-pouffes',
+    en: 'Footstools & Pouffes',
+    nl: 'Voetenbanken & Poefs',
     parentId: 1
   },
   {
     id: 2,
-    name: '',
-    en: '',
+    name: 'chairs',
+    en: 'Chairs',
     nl: 'Stoelen',
     parentId: 2
   },
   {
     id: 201,
-    name: '',
-    en: '',
+    name: 'armchairs',
+    en: 'Armchairs',
     nl: 'Armstoelen',
     parentId: 2
   },
   {
     id: 202,
-    name: '',
-    en: '',
+    name: 'dining-room-chairs',
+    en: 'Dining Room Chairs',
     nl: 'Eetkamerstoelen',
     parentId: 2
   },
   {
     id: 203,
-    name: '',
-    en: '',
-    nl: 'Krukken',
+    name: 'stools',
+    en: 'Stools',
+    nl: 'Krukjes',
     parentId: 2
   },
   {
     id: 204,
-    name: '',
-    en: '',
+    name: 'bar-chars',
+    en: 'Bar Chairs',
     nl: 'Barkrukken',
     parentId: 2
   },
   {
     id: 205,
-    name: '',
-    en: '',
+    name: 'office-chairs',
+    en: 'Office Chairs',
     nl: 'Bureaustoelen',
     parentId: 2
   },
   {
     id: 206,
-    name: '',
-    en: '',
-    nl: 'Poefen',
+    name: 'junior-chairs',
+    en: 'Junior Chairs',
+    nl: 'Kinderstoelen',
     parentId: 2
   },
   {
     id: 3,
-    name: '',
-    en: '',
+    name: 'tables',
+    en: 'Tables',
     nl: 'Tafels',
     parentId: 3
   },
   {
     id: 301,
-    name: '',
-    en: '',
-    nl: 'Salontafels',
+    name: 'coffee-side-tables',
+    en: 'Coffee & Side Tables',
+    nl: 'Salon- & Bijzettafels',
     parentId: 3
   },
   {
     id: 302,
-    name: '',
-    en: '',
+    name: 'dining-tables',
+    en: 'Dining Tables',
     nl: 'Eetkamertafels',
     parentId: 3
   },
   {
     id: 303,
-    name: '',
-    en: '',
+    name: 'cafe-bar-tables',
+    en: 'Café & Bar Tables',
     nl: 'Bartafels',
     parentId: 3
   },
   {
     id: 304,
-    name: '',
-    en: '',
+    name: 'office-desks',
+    en: 'Office Desks',
     nl: 'Bureaus',
     parentId: 3
   },
   {
     id: 305,
-    name: '',
-    en: '',
-    nl: 'Sidetable',
-    parentId: 3
-  },
-  {
-    id: 306,
-    name: '',
-    en: '',
-    nl: 'Bijzettafels',
+    name: 'childrens-tables',
+    en: 'Children\'s Tables',
+    nl: 'Kindertafels',
     parentId: 3
   },
   {
     id: 4,
-    name: '',
-    en: '',
+    name: 'beds',
+    en: 'Beds',
     nl: 'Bedden',
     parentId: 4
   },
   {
     id: 401,
-    name: '',
-    en: '',
-    nl: 'Bedden',
+    name: 'double-beds',
+    en: 'Double Beds',
+    nl: 'Tweepersoonsbed',
     parentId: 4
   },
   {
     id: 402,
-    name: '',
-    en: '',
-    nl: 'Boxsprings',
+    name: 'single-beds',
+    en: 'Single Beds',
+    nl: 'Eenpersoonsbed',
     parentId: 4
   },
   {
     id: 403,
-    name: '',
-    en: '',
-    nl: 'Bedbanken',
+    name: 'loft-beds-bunk-beds',
+    en: 'Loft Beds & Bunk Beds',
+    nl: 'Hoogslapers & Stapelbedden',
     parentId: 4
   },
   {
     id: 404,
-    name: '',
-    en: '',
-    nl: 'Hoogslapers',
+    name: 'sofa-beds-chair-beds',
+    en: 'Sofa Beds & Chair Beds',
+    nl: 'Bedbanken & Logeerbedden',
     parentId: 4
   },
   {
     id: 405,
-    name: '',
-    en: '',
-    nl: 'Stapelbedden',
-    parentId: 4
-  },
-  {
-    id: 406,
-    name: '',
-    en: '',
+    name: 'childrens-beds',
+    en: 'Children\'s Beds',
     nl: 'Kinderbedden',
     parentId: 4
   },
   {
+    id: 406,
+    name: 'divan-beds',
+    en: 'Divan Beds',
+    nl: 'Boxsprings',
+    parentId: 4
+  },
+  {
     id: 5,
-    name: '',
-    en: '',
+    name: 'storage',
+    en: 'Storage',
     nl: 'Kasten',
     parentId: 5
   },
   {
     id: 501,
-    name: '',
-    en: '',
-    nl: 'Ladekasten',
+    name: 'bookcases',
+    en: 'Bookcases',
+    nl: 'Boekenkasten',
     parentId: 5
   },
   {
     id: 502,
-    name: '',
-    en: '',
-    nl: 'Schoenenkasten',
+    name: 'wardrobes',
+    en: 'Wardrobes',
+    nl: 'Garderobekasten',
     parentId: 5
   },
   {
     id: 503,
-    name: '',
-    en: '',
-    nl: 'Opbergkasten',
+    name: 'tv-stands-media-units',
+    en: 'Tv Stands & Media Units',
+    nl: 'TV/media Meubels',
     parentId: 5
   },
   {
     id: 504,
     name: '',
     en: '',
-    nl: 'Boekenkasten',
+    nl: 'Ladekasten',
     parentId: 5
   },
   {
     id: 505,
-    name: '',
-    en: '',
-    nl: 'Vitrinekasten',
+    name: 'nightstands',
+    en: 'Nightstands',
+    nl: 'Nachtkasten',
     parentId: 5
   },
   {
     id: 506,
     name: '',
     en: '',
-    nl: 'Wandkasten',
-    parentId: 5
-  },
-  {
-    id: 507,
-    name: '',
-    en: '',
-    nl: 'Wandkasten',
-    parentId: 5
-  },
-  {
-    id: 508,
-    name: '',
-    en: '',
-    nl: 'Buffetkasten',
-    parentId: 5
-  },
-  {
-    id: 509,
-    name: '',
-    en: '',
-    nl: 'Tv Meubels',
-    parentId: 5
-  },
-  {
-    id: 510,
-    name: '',
-    en: '',
-    nl: 'Dressoirs',
+    nl: '',
     parentId: 5
   },
   {
