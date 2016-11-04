@@ -5,9 +5,10 @@ import Filters from './Filters.jsx';
 
 class Shop extends Component {
   render() {
+    const category = this.props.params.category;
     return (
       <div className='shop container'>
-        <Banner />
+        <Banner category={category} />
         <Filters />
       </div>
     );
