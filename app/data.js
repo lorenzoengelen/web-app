@@ -211,8 +211,8 @@ export const data = [
   },
   {
     id: 504,
-    name: '',
-    en: '',
+    name: 'dressers',
+    en: 'Dressers',
     nl: 'Ladekasten',
     parentId: 5
   },
@@ -224,178 +224,66 @@ export const data = [
     parentId: 5
   },
   {
-    id: 506,
-    name: '',
-    en: '',
-    nl: '',
-    parentId: 5
-  },
-  {
     id: 6,
-    name: '',
-    en: '',
+    name: 'lighting',
+    en: 'Lighting',
     nl: 'Verlichting',
     parentId: 6
   },
   {
     id: 601,
-    name: '',
-    en: '',
-    nl: 'Kroonluchters',
-    parentId: 6
-  },
-  {
-    id: 602,
-    name: '',
-    en: '',
-    nl: 'Hanglampen',
-    parentId: 6
-  },
-  {
-    id: 603,
-    name: '',
-    en: '',
+    name: 'ceiling-lights',
+    en: 'Ceiling Lights',
     nl: 'Plafondlampen',
     parentId: 6
   },
   {
+    id: 602,
+    name: 'floor-lamps',
+    en: 'Floor Lamps',
+    nl: 'Staande Lampen',
+    parentId: 6
+  },
+  {
+    id: 603,
+    name: 'wall-lights',
+    en: 'Wall Lights',
+    nl: 'Wandlampen',
+    parentId: 6
+  },
+  {
     id: 604,
-    name: '',
-    en: '',
+    name: 'table-lamps',
+    en: 'Table Lamps',
     nl: 'Tafellampen',
     parentId: 6
   },
   {
     id: 605,
-    name: '',
-    en: '',
-    nl: 'Wandlampen',
+    name: 'work-lamps',
+    en: 'Work Lamps',
+    nl: 'Bureaulampen',
     parentId: 6
   },
   {
     id: 606,
-    name: '',
-    en: '',
-    nl: 'Vloerlampen',
-    parentId: 6
-  },
-  {
-    id: 607,
-    name: '',
-    en: '',
-    nl: 'Spots',
-    parentId: 6
-  },
-  {
-    id: 608,
-    name: '',
-    en: '',
-    nl: 'Inbouwlampen',
+    name: 'decorative-lighting',
+    en: 'Decorative Lighting',
+    nl: 'Sierverlichting',
     parentId: 6
   },
   {
     id: 7,
-    name: '',
-    en: '',
+    name: 'decoration',
+    en: 'Decoration',
     nl: 'Decoratie',
     parentId: 7
   },
   {
     id: 701,
-    name: '',
-    en: '',
-    nl: 'Vloerkleden',
-    parentId: 7
-  },
-  {
-    id: 702,
-    name: '',
-    en: '',
-    nl: 'Kapstokken',
-    parentId: 7
-  },
-  {
-    id: 703,
-    name: '',
-    en: '',
-    nl: 'Krantenbakken',
-    parentId: 7
-  },
-  {
-    id: 704,
-    name: '',
-    en: '',
+    name: 'mirrors',
+    en: 'Mirros',
     nl: 'Spiegels',
     parentId: 7
-  },
-  {
-    id: 705,
-    name: '',
-    en: '',
-    nl: 'Boekenplanken',
-    parentId: 7
-  },
-  {
-    id: 706,
-    name: '',
-    en: 'Storage',
-    nl: 'Opbergen',
-    parentId: 7
-  },
-  {
-    id: 707,
-    name: '',
-    en: '',
-    nl: 'Woonkussen',
-    parentId: 7
-  },
-  {
-    id: 8,
-    name: '',
-    en: '',
-    nl: 'Kindermeubilair',
-    parentId: 8
-  },
-  {
-    id: 801,
-    name: '',
-    en: '',
-    nl: 'Bedden',
-    parentId: 8
-  },
-  {
-    id: 802,
-    name: '',
-    en: '',
-    nl: 'Boxen',
-    parentId: 8
-  },
-  {
-    id: 803,
-    name: '',
-    en: '',
-    nl: 'Commodes',
-    parentId: 8
-  },
-  {
-    id: 804,
-    name: '',
-    en: '',
-    nl: 'Kasten',
-    parentId: 8
-  },
-  {
-    id: 805,
-    name: '',
-    en: '',
-    nl: 'Kinderstoelen',
-    parentId: 8
-  },
-  {
-    id: 806,
-    name: '',
-    en: '',
-    nl: 'Stapelbedden',
-    parentId: 8
   }
 ];
