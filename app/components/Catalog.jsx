@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Nav, NavDropdown, NavItem, MenuItem } from 'react-bootstrap';
+import { Nav, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Link } from 'react-router';
 import { LinkContainer } from 'react-router-bootstrap';
 import _ from 'lodash';
 
@@ -88,17 +89,6 @@ const categories = {
       'Opbergen',
       'Woonkussen'
     ]
-  },
-  8: {
-    category: 'Kindermeubilair',
-    subcategories: [
-      'Bedden',
-      'Boxen',
-      'Commodes',
-      'Kasten',
-      'Kinderstoelen',
-      'Stapelbedden'
-    ]
   }
 };
 
@@ -146,8 +136,7 @@ class Catalog extends Component {
         <LinkContainer key={i} to={{pathname: `/shop/${subcategory}`}}>
           <MenuItem
             className='catalog-subcategory'
-            onClick={this.handleOnClick.bind(this)}
-            eventKey={subcategory}>
+            onClick={this.handleOnClick.bind(this)}>            
             {subcategory}
           </MenuItem>
         </LinkContainer>
@@ -156,14 +145,20 @@ class Catalog extends Component {
   }
 
   render() {
-    console.log(data);
     return (
       <div className='container catalog'>
-        <Nav bsStyle='tabs' justified>
-          <LinkContainer to={{pathname: '/shop/Nieuw'}}>
-            <NavItem className='catalog-category' title='Nieuw'>Nieuw</NavItem>
-          </LinkContainer>
+        <Nav bsStyle='pills' justified>
+
+          <li className='catalog-new'>
+            <Link to={'/shop/new'}>Nieuw</Link>
+          </li>
+
           {this.renderCategories()}
+
+          <li className='catalog-sell active'>
+            <Link to={'/sell'}>Verkopen</Link>
+          </li>
+
         </Nav>
       </div>
     );
