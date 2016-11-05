@@ -6,96 +6,20 @@ import _ from 'lodash';
 
 import { data } from '../data.js';
 
-const categories = {
-  1: {
-    category: 'Banken',
-    subcategories: [
-      'Hoekbanken',
-      'Tweezitsbank',
-      'Driezitsbank',
-      'Chaise Longue',
-      'Slaapbank',
-      'Eetkamerbank'
-    ]
-  },
-  2: {
-    category: 'Stoelen',
-    subcategories: [
-      'Armstoelen',
-      'Eetkamerstoelen',
-      'Krukken',
-      'Barkrukken',
-      'Bureaustoelen',
-      'Poefen'
-    ]
-  },
-  3: {
-    category: 'Tafels',
-    subcategories: [
-      'Salontafels',
-      'Eetkamertafels',
-      'Bartafels',
-      'Bureaus',
-      'Sidetable',
-      'Bijzettafels'
-    ]
-  },
-  4: {
-    category: 'Bedden',
-    subcategories: [
-      'Bedden',
-      'Boxsprings',
-      'Bedbanken',
-      'Hoogslapers',
-      'Stapelbedden',
-      'Kinderbedden'
-    ]
-  },
-  5: {
-    category: 'Kasten',
-    subcategories: [
-      'Ladekasten',
-      'Schoenenkasten',
-      'Opbergkasten',
-      'Boekenkasten',
-      'Vitrinekasten',
-      'Wandkasten',
-      'Buffetkasten',
-      'Tv Meubels',
-      'Dressiors'
-    ]
-  },
-  6: {
-    category: 'Verlichting',
-    subcategories: [
-      'Kroonluchters',
-      'Hanglampen',
-      'Plafondlampen',
-      'Tafellampen',
-      'Wandlampen',
-      'Vloerlampen',
-      'Spots',
-      'Inbouwlampen'
-    ]
-  },
-  7: {
-    category: 'Decoratie',
-    subcategories: [
-      'Vloerkleden',
-      'Kapstokken',
-      'Krantenbakken',
-      'Spiegels',
-      'Boekenplanken',
-      'Opbergen',
-      'Woonkussen'
-    ]
-  }
-};
-
 class Catalog extends Component {
   constructor(props) {
     super(props);
-    this.state = {show: ''};
+    this.state = {};
+  }
+
+  componentWillMount() {
+    const categories = _.filter(data, ({id, parentId}) => {
+      return id === parentId;
+    });
+    const subcategories = _.filter(data, ({id, parentId}) => {
+      return id !== parentId;
+    });
+    this.setState({categories, subcategories});
   }
 
   handleMouseOver(e) {
@@ -111,33 +35,39 @@ class Catalog extends Component {
   }
 
   renderCategories() {
-    return _.map(categories, ({category, subcategories}, i) => {
+    const categories = this.state.categories;
+    return _.map(categories, ({id, name, nl}) => {
       return (
-        <LinkContainer key={i} to={{pathname: `/shop/${category}`}}>
+        <LinkContainer key={id} to={{pathname: `/shop/${name}`}}>
           <NavDropdown
             className='catalog-category'
-            title={category}
-            id={category}
+            title={nl}
+            id={name}
             onMouseOver={this.handleMouseOver.bind(this)}
             onClick={this.handleOnClick.bind(this)}
             onToggle={() => {}}
-            open={this.state.show === category}
-            noCaret>
-            {this.renderSubcategories(subcategories)}
+            open={this.state.show === name}
+            noCaret
+          >
+          {this.renderSubcategories(id)}
           </NavDropdown>
         </LinkContainer>
       );
     });
   }
 
-  renderSubcategories(subcategories) {
-    return _.map(subcategories, (subcategory, i) => {
+  renderSubcategories(id) {
+    const subcategories = this.state.subcategories;
+    const filtered = _.filter(subcategories, ({parentId}) => {
+      return id === parentId;
+    });
+    return _.map(filtered, ({id, name, nl}) => {
       return (
-        <LinkContainer key={i} to={{pathname: `/shop/${subcategory}`}}>
+        <LinkContainer key={id} to={{pathname: `/shop/${name}`}}>
           <MenuItem
             className='catalog-subcategory'
-            onClick={this.handleOnClick.bind(this)}>            
-            {subcategory}
+            onClick={this.handleOnClick.bind(this)}>
+            {nl}
           </MenuItem>
         </LinkContainer>
       );
