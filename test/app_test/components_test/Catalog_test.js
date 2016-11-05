@@ -15,7 +15,7 @@ describe('<Catalog />', () => {
   });
 
   it('has item new "nieuw"', () => {
-    expect(categories).to.include('Nieuw');
+    expect(wrapper.find('.catalog-new').text()).to.equal('<Link />');
   });
 
   it('has item sofas "banken"', () => {
@@ -46,8 +46,8 @@ describe('<Catalog />', () => {
     expect(categories).to.include('Decoratie');
   });
 
-  it('has item children furniture "kindermeubilair"', () => {
-    expect(categories).to.include('Kindermeubilair');
+  it('has item children furniture "verkopen"', () => {
+    expect(wrapper.find('.catalog-sell').text()).to.equal('<Link />');
   });
 
 });
