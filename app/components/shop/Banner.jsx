@@ -5,12 +5,12 @@ const bannerStyle = {
   backgroundImage: 'url(' + require('../../assets/img/office.jpg') + ')',
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
-  minHeight: '200px',
+  height: '200px',
   color: 'white'
 };
 
 const titleStyle = {
-  lineHeight: '150px'
+  lineHeight: '120px'
 };
 
 import { data } from '../../data.js';
