@@ -71,7 +71,7 @@ export const data = [
   },
   {
     id: 204,
-    name: 'bar-chars',
+    name: 'bar-chairs',
     en: 'Bar Chairs',
     nl: 'Barkrukken',
     parentId: 2
@@ -284,6 +284,13 @@ export const data = [
     name: 'mirrors',
     en: 'Mirros',
     nl: 'Spiegels',
+    parentId: 7
+  },
+  {
+    id: 702,
+    name: 'wall-art',
+    en: 'Wall Art',
+    nl: 'Muurkunst',
     parentId: 7
   }
 ];
