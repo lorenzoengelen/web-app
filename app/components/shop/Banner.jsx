@@ -26,7 +26,7 @@ class Banner extends Component {
 
   getCategory() {
     const {category} = this.props;
-    if (category === 'new') { return 'Nieuw' }
+    if (category === 'new') { return 'Nieuw'; }
     const {parentId} = _.find(data, ({name}) => {
       return name === category;
     });
