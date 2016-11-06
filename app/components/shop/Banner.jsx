@@ -9,6 +9,10 @@ const bannerStyle = {
   color: 'white'
 };
 
+const titleStyle = {
+  lineHeight: '150px'
+};
+
 import { data } from '../../data.js';
 
 class Banner extends Component {
@@ -55,7 +59,7 @@ class Banner extends Component {
   render() {
     return (
       <div className='banner' style={bannerStyle}>
-        <h1 className='text-center banner-header'>{this.getCategory()}</h1>
+        <h1 className='text-center banner-header' style={titleStyle}>{this.getCategory()}</h1>
         <ul className='nav nav-pills nav-justified'>
           {this.renderSubcategories()}
         </ul>

@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 
+const headerStyles = {
+  color: 'white',
+  backgroundColor: 'white'
+};
+
 class Header extends Component {
   render() {
     return (
-      <header className='navbar navbar-default'>
+      <header className='navbar navbar-default' styles={headerStyles}>
         <div className='container'>
 
           <div className='navbar-header'>
@@ -28,9 +33,6 @@ class Header extends Component {
             className='collapse navbar-collapse'
             classID='navbar-collapse-1'>
             <ul className='nav navbar-nav navbar-right'>
-              <li>
-                <button type='button' className='btn btn-danger navbar-btn sell-furniture'>Verkoop Meubilair</button>
-              </li>
               <li><a href='#' className='login'>Inloggen</a></li>
               <li><a href='#' className='wishlist'>Verlanglijst <span className='badge'>0</span></a></li>
               <li><a href='#' className='shopping-cart'>Winkelwagen <span className='badge'>0</span></a></li>
