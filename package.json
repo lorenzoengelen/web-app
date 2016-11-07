@@ -84,6 +84,7 @@
     "postcss-loader": "^1.0.0",
     "react-addons-test-utils": "^15.3.2",
     "react-dom": "^15.3.2",
+    "redux-devtools": "^3.3.1",
     "sinon": "^1.17.6",
     "strip-loader": "^0.1.2",
     "style-loader": "^0.13.1",
@@ -97,7 +98,14 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "jquery": "^3.1.1",
+    "lodash": "^4.16.6",
     "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "react-bootstrap": "^0.30.6",
+    "react-dom": "^15.3.2",
+    "react-redux": "^4.4.5",
+    "react-router": "^3.0.0",
+    "react-router-bootstrap": "^0.23.1",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0"
   }
 }
