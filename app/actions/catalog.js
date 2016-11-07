@@ -6,7 +6,7 @@ const receiveCatalog = categories => ({
   categories: categories
 });
 
-export const getCatalog = () => dispatch => {
+export const fetchCatalog = () => dispatch => {
   catalog.getCategories(categories => {
     dispatch(receiveCatalog(categories));
   });
