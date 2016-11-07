@@ -2,7 +2,7 @@ import catalog from '../api/catalog';
 import * as types from '../constants/ActionTypes';
 
 const receiveCatalog = categories => ({
-  type: types.RECEIVE_CATALOG,
+  type: types.CATALOG_SUCCESS,
   categories: categories
 });
 
