@@ -14,6 +14,13 @@ import App from './components/App.jsx';
 import Shop from './components/shop/Shop.jsx';
 import NoMatch from './components/NoMatch.jsx';
 
+// redux store
+const middleware = [thunk];
+const store = createStore(
+  reducers,
+  applyMiddleware(...middleware)
+);
+
 ReactDOM.render((
   <Router history={browserHistory}>
     <Route path='/' component={App}>
