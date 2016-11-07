@@ -5,8 +5,6 @@ import { Link } from 'react-router';
 import { LinkContainer } from 'react-router-bootstrap';
 import _ from 'lodash';
 
-import { data } from '../data.js';
-
 const sellButtonStyle = {
   backgroundColor: '#F36D22',
   borderRadius: '0'
@@ -30,16 +28,6 @@ class Catalog extends Component {
     this.state = {};
   }
 
-  componentWillMount() {
-    const categories = _.filter(data, ({id, parentId}) => {
-      return id === parentId;
-    });
-    const subcategories = _.filter(data, ({id, parentId}) => {
-      return id !== parentId;
-    });
-    this.setState({categories, subcategories});
-  }
-
   handleMouseOver(e) {
     this.setState({show: e.target.id});
   }
@@ -53,7 +41,7 @@ class Catalog extends Component {
   }
 
   renderCategories() {
-    const categories = this.state.categories;
+    const categories = this.props.categories;
     return _.map(categories, ({id, name, nl}) => {
       return (
         <LinkContainer key={id} to={{pathname: `/shop/${name}`}}>
@@ -76,11 +64,10 @@ class Catalog extends Component {
   }
 
   renderSubcategories(id) {
-    const subcategories = this.state.subcategories;
-    const filtered = _.filter(subcategories, ({parentId}) => {
-      return id === parentId;
-    });
-    return _.map(filtered, ({id, name, nl}) => {
+    const children = this.props.relations[id];
+    const subcategories = this.props.subcategories;
+    return _.map(children, (id) => {
+      const {name, nl} = subcategories[id];
       return (
         <LinkContainer key={id} to={{pathname: `/shop/${name}`}}>
           <MenuItem
@@ -94,7 +81,6 @@ class Catalog extends Component {
   }
 
   render() {
-    console.log('PROPS', this.props);
     return (
       <div style={catalogStyle}>
         <div className='container catalog'>
