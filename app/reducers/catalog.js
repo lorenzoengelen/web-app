@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import { CATALOG_SUCCESS } from '../constants/ActionTypes';
+import { CATALOG_FETCH_SUCCESS } from '../constants/ActionTypes';
 
 const categories = (state = {}, action) => {
   switch (action.type) {
-    case CATALOG_SUCCESS:
+    case CATALOG_FETCH_SUCCESS:
       return {
         ...state,
         ...action.categories.filter(({id, parentId}) => {
@@ -20,7 +20,7 @@ const categories = (state = {}, action) => {
 
 const subcategories = (state = {}, action) => {
   switch (action.type) {
-    case CATALOG_SUCCESS:
+    case CATALOG_FETCH_SUCCESS:
       return {
         ...state,
         ...action.categories.filter(({id, parentId}) => {
@@ -37,7 +37,7 @@ const subcategories = (state = {}, action) => {
 
 const relations = (state = {}, action) => {
   switch (action.type) {
-    case CATALOG_SUCCESS:
+    case CATALOG_FETCH_SUCCESS:
       return {
         ...state,
         ...action.categories.filter(({id, parentId}) => {
