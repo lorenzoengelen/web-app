@@ -16,19 +16,24 @@ import NoMatch from './components/NoMatch.jsx';
 
 // redux store
 const middleware = [thunk];
+if (process.env.npm_lifecycle_event === 'start') {
+  middleware.push(createLogger());
+}
 const store = createStore(
   reducers,
   applyMiddleware(...middleware)
 );
 
 ReactDOM.render((
-  <Router history={browserHistory}>
-    <Route path='/' component={App}>
-      <IndexRoute />
-      <Route path='shop' component={Shop}>
-        <Route path='/shop/:category' component={Shop} />
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      <Route path='/' component={App}>
+        <IndexRoute />
+        <Route path='shop' component={Shop}>
+          <Route path='/shop/:category' component={Shop} />
+        </Route>
+        <Route path='*' component={NoMatch} />
       </Route>
-      <Route path='*' component={NoMatch} />
-    </Route>
-  </Router>
+    </Router>
+  </Provider>
 ), document.getElementById('app'));
