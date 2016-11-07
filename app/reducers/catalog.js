@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { RECEIVE_CATALOG } from '../constants/ActionTypes';
 
-const catalog = (state = [], action) => {
+const categories = (state = [], action) => {
   switch (action.type) {
     case RECEIVE_CATALOG:
       return [...state, action.payload];
@@ -10,6 +10,14 @@ const catalog = (state = [], action) => {
   }
 };
 
+const subcategories = (state = [], action) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
-  catalog
+  categories,
+  subcategories
 });
