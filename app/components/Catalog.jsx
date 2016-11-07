@@ -119,7 +119,8 @@ class Catalog extends Component {
 
 const mapStateToProps = state => ({
   categories: state.catalog.categories,
-  subcategories: state.catalog.subcategories
+  subcategories: state.catalog.subcategories,
+  relations: state.catalog.relations
 });
 
 export default connect(mapStateToProps, null)(Catalog);
