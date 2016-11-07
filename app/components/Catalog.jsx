@@ -94,6 +94,7 @@ class Catalog extends Component {
   }
 
   render() {
+    console.log('PROPS', this.props);
     return (
       <div style={catalogStyle}>
         <div className='container catalog'>
