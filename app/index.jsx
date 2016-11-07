@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
+import { getCatalog } from './actions/catalog';
 
 // components
 import App from './components/App.jsx';
@@ -23,6 +24,8 @@ const store = createStore(
   reducers,
   applyMiddleware(...middleware)
 );
+store.dispatch(getCatalog());
+console.log(store.getState());
 
 ReactDOM.render((
   <Provider store={store}>
