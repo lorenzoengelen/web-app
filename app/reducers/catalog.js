@@ -4,7 +4,7 @@ import { RECEIVE_CATALOG } from '../constants/ActionTypes';
 const categories = (state = [], action) => {
   switch (action.type) {
     case RECEIVE_CATALOG:
-      return [...state, action.payload];
+      return [...state, ...action.categories];
     default:
       return state;
   }
