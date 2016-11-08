@@ -17,7 +17,7 @@ process.env.BABEL_ENV = TARGET;
 const PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build'),
-  style: path.join(__dirname, 'app/styles/main.css'),
+  style: path.join(__dirname, 'app/styles/main.scss'),
   test: path.join(__dirname, 'test'),
   bootstrap: path.join(__dirname, 'node_modules/bootstrap/dist/css/bootstrap.min.css')
 };
