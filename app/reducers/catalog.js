@@ -12,7 +12,11 @@ const categories = (state = {}, action) => {
         ...action.categories.filter(({id, parentId}) => {
           return id === parentId;
         }).reduce((obj, category) => {
+          const children = action.categories.filter(({id, parentId}) => {
+            return category.id === parentId && id !== parentId;
+          });
           obj[category.id] = category;
+          obj[category.id].subcategories = children.map(({id}) => { return id; });
           return obj;
         }, {})
       };
