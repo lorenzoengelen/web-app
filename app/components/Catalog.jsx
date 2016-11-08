@@ -73,7 +73,7 @@ class Catalog extends Component {
   }
 
   renderSubcategories(id) {
-    const children = this.props.relations[id];
+    const children = this.props.categories[id].subcategories;
     const subcategories = this.props.subcategories;
     return _.map(children, (id) => {
       const {name, nl} = subcategories[id];
@@ -119,7 +119,6 @@ class Catalog extends Component {
 const mapStateToProps = ({catalog}) => ({
   categories: catalog.categories,
   subcategories: catalog.subcategories,
-  relations: catalog.relations,
   currentCategory: catalog.currentCategory
 });
 

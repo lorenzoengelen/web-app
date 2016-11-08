@@ -42,26 +42,6 @@ const subcategories = (state = {}, action) => {
   }
 };
 
-const relations = (state = {}, action) => {
-  switch (action.type) {
-    case CATALOG_FETCH_SUCCESS:
-      return {
-        ...state,
-        ...action.categories.filter(({id, parentId}) => {
-          return id === parentId;
-        }).reduce((obj, category) => {
-          const children = action.categories.filter(({id, parentId}) => {
-            return category.id === parentId && id !== parentId;
-          });
-          obj[category.id] = children.map(({id}) => { return id; });
-          return obj;
-        }, {})
-      };
-    default:
-      return state;
-  }
-};
-
 const currentCategory = (state = {}, action) => {
   switch (action.type) {
     case CATALOG_SET_CATEGORY:
@@ -78,6 +58,5 @@ const currentCategory = (state = {}, action) => {
 export default combineReducers({
   categories,
   subcategories,
-  relations,
   currentCategory
 });
