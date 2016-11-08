@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import _ from 'lodash';
 
 const bannerStyle = {
@@ -57,9 +58,10 @@ class Banner extends Component {
   }
 
   render() {
+    const category = this.props.categories[this.props.currentCategory.parentId].nl || '';
     return (
       <div className='banner' style={bannerStyle}>
-        <h1 className='text-center banner-header' style={titleStyle}>{this.getCategory()}</h1>
+        <h1 className='text-center banner-header' style={titleStyle}>{category}</h1>
         <ul className='nav nav-pills nav-justified'>
           {this.renderSubcategories()}
         </ul>
@@ -68,4 +70,10 @@ class Banner extends Component {
   }
 }
 
-export default Banner;
+const mapStateToProps = ({catalog}) => ({
+  categories: catalog.categories,
+  subcategories: catalog.subcategories,
+  currentCategory: catalog.currentCategory
+});
+
+export default connect(mapStateToProps, null)(Banner);
