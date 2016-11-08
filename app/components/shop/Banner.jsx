@@ -23,7 +23,13 @@ class Banner extends Component {
     const subcategories = this.props.categories[id].subcategories;
     return _.map(subcategories, id => {
       const subcategory = this.props.subcategories[id];
-      return <li key={subcategory.id}><a href='#'>{subcategory.nl}</a></li>;
+      return (
+        <li
+          className={this.props.currentCategory.id === id ? 'active' : ''}
+          key={subcategory.id}>
+            <a href='#'>{subcategory.nl}</a>
+        </li>
+      );
     });
   }
 
