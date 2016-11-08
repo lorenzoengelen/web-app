@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../../actions/catalog';
 import _ from 'lodash';
 
 const bannerStyle = {
@@ -19,6 +20,15 @@ class Banner extends Component {
     super(props);
   }
 
+  onClick(id) {
+    this.setCategory(id);
+  }
+
+  setCategory(id) {
+    const category = this.props.subcategories[id];
+    this.props.setCategory(category);
+  }
+
   renderSubcategories(id) {
     const subcategories = this.props.categories[id].subcategories;
     return _.map(subcategories, id => {
@@ -26,8 +36,14 @@ class Banner extends Component {
       return (
         <li
           className={this.props.currentCategory.id === id ? 'active' : ''}
-          key={subcategory.id}>
-            <a href='#'>{subcategory.nl}</a>
+          key={subcategory.id}
+        >
+            <a
+              href='#'
+              onClick={() => this.onClick(id)}
+            >
+              {subcategory.nl}
+            </a>
         </li>
       );
     });
@@ -53,4 +69,4 @@ const mapStateToProps = ({catalog}) => ({
   currentCategory: catalog.currentCategory
 });
 
-export default connect(mapStateToProps, null)(Banner);
+export default connect(mapStateToProps, actions)(Banner);
