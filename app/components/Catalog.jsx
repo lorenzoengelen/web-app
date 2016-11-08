@@ -41,6 +41,11 @@ class Catalog extends Component {
     }
   }
 
+  setCategory(id) {
+    const category = this.props.categories[id] || this.props.subcategories[id];
+    this.props.setCategory(category);
+  }
+
   renderCategories() {
     const categories = this.props.categories;
     return _.map(categories, ({id, name, nl}) => {
@@ -51,7 +56,10 @@ class Catalog extends Component {
             title={nl}
             id={name}
             onMouseOver={this.handleMouseOver.bind(this)}
-            onClick={this.handleOnClick.bind(this)}
+            onClick={
+              this.handleOnClick.bind(this),
+              () => {this.setCategory(id);}
+            }
             onToggle={() => {}}
             open={this.state.show === name}
             noCaret
@@ -73,7 +81,10 @@ class Catalog extends Component {
         <LinkContainer key={id} to={{pathname: `/shop/${name}`}}>
           <MenuItem
             className='catalog-subcategory'
-            onClick={this.handleOnClick.bind(this)}>
+            onClick={
+              this.handleOnClick.bind(this),
+              () => {this.setCategory(id);}
+            }>
             {nl}
           </MenuItem>
         </LinkContainer>
@@ -83,7 +94,6 @@ class Catalog extends Component {
 
   render() {
     console.log('PROPS', this.props);
-    // this.props.setCategory(this.props.categories[2]);
     return (
       <div style={catalogStyle}>
         <div className='container catalog'>
@@ -106,11 +116,11 @@ class Catalog extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  categories: state.catalog.categories,
-  subcategories: state.catalog.subcategories,
-  relations: state.catalog.relations,
-  currentCategory: state.catalog.currentCategory
+const mapStateToProps = ({catalog}) => ({
+  categories: catalog.categories,
+  subcategories: catalog.subcategories,
+  relations: catalog.relations,
+  currentCategory: catalog.currentCategory
 });
 
 export default connect(mapStateToProps, actions)(Catalog);
