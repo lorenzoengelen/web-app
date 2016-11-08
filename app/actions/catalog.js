@@ -12,10 +12,7 @@ export const fetchCatalog = () => dispatch => {
   });
 };
 
-export const setCategory = category => {
-  console.log('CATEGORY', category);
-  return {
-    type: types.CATALOG_SET_CATEGORY,
-    category
-  };
-};
+export const setCategory = category => ({
+  type: types.CATALOG_SET_CATEGORY,
+  category
+});
