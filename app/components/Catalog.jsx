@@ -29,16 +29,17 @@ class Catalog extends Component {
     this.state = {};
   }
 
-  handleMouseOver(e) {
-    this.setState({show: e.target.id});
-  }
-
-  handleOnClick(e) {
+  onClick(id) {
     if (this.state.show) {
       this.setState({show: ''});
     } else {
-      this.setState({show: e.target.id});
+      this.setState({show: id});
     }
+    this.setCategory(id);
+  }
+
+  onMouseOver(id) {
+    this.setState({show: id});
   }
 
   setCategory(id) {
@@ -55,13 +56,10 @@ class Catalog extends Component {
             className='catalog-category'
             title={nl}
             id={name}
-            onMouseOver={this.handleMouseOver.bind(this)}
-            onClick={
-              this.handleOnClick.bind(this),
-              () => {this.setCategory(id);}
-            }
+            onMouseOver={() => this.onMouseOver(id)}
+            onClick={() => this.onClick(id)}
             onToggle={() => {}}
-            open={this.state.show === name}
+            open={this.state.show === id}
             noCaret
             style={pillStyle}
           >
@@ -81,10 +79,8 @@ class Catalog extends Component {
         <LinkContainer key={id} to={{pathname: `/shop/${name}`}}>
           <MenuItem
             className='catalog-subcategory'
-            onClick={
-              this.handleOnClick.bind(this),
-              () => {this.setCategory(id);}
-            }>
+            onClick={() => this.onClick(id)}
+          >
             {nl}
           </MenuItem>
         </LinkContainer>
@@ -93,7 +89,6 @@ class Catalog extends Component {
   }
 
   render() {
-    console.log('PROPS', this.props);
     return (
       <div style={catalogStyle}>
         <div className='container catalog'>
