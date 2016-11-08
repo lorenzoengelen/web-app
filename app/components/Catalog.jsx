@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../actions/catalog';
 import { Nav, NavDropdown, MenuItem } from 'react-bootstrap';
 import { Link } from 'react-router';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -81,6 +82,8 @@ class Catalog extends Component {
   }
 
   render() {
+    console.log('PROPS', this.props);
+    // this.props.setCategory(this.props.categories[2]);
     return (
       <div style={catalogStyle}>
         <div className='container catalog'>
@@ -106,7 +109,8 @@ class Catalog extends Component {
 const mapStateToProps = state => ({
   categories: state.catalog.categories,
   subcategories: state.catalog.subcategories,
-  relations: state.catalog.relations
+  relations: state.catalog.relations,
+  currentCategory: state.catalog.currentCategory
 });
 
-export default connect(mapStateToProps, null)(Catalog);
+export default connect(mapStateToProps, actions)(Catalog);

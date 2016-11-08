@@ -1,5 +1,8 @@
 import { combineReducers } from 'redux';
-import { CATALOG_FETCH_SUCCESS } from '../constants/ActionTypes';
+import {
+  CATALOG_FETCH_SUCCESS,
+  CATALOG_SET_CATEGORY
+} from '../constants/ActionTypes';
 
 const categories = (state = {}, action) => {
   switch (action.type) {
@@ -55,8 +58,22 @@ const relations = (state = {}, action) => {
   }
 };
 
+const currentCategory = (state = {}, action) => {
+  switch (action.type) {
+    case CATALOG_SET_CATEGORY:
+      console.log('ACTION', action.category);
+      return {
+        ...state,
+        ...action.category
+      };
+      default: 
+        return state;
+  }
+};
+
 export default combineReducers({
   categories,
   subcategories,
-  relations
+  relations,
+  currentCategory
 });
