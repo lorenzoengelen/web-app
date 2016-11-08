@@ -45,7 +45,6 @@ const subcategories = (state = {}, action) => {
 const currentCategory = (state = {}, action) => {
   switch (action.type) {
     case CATALOG_SET_CATEGORY:
-      console.log('ACTION', action.category);
       return {
         ...state,
         ...action.category
