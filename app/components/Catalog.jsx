@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions/catalog';
 import { Nav, NavDropdown, MenuItem } from 'react-bootstrap';
 import { Link } from 'react-router';
 import { LinkContainer } from 'react-router-bootstrap';
 import _ from 'lodash';
-
-import { data } from '../data.js';
 
 const sellButtonStyle = {
   backgroundColor: '#F36D22',
@@ -29,30 +29,26 @@ class Catalog extends Component {
     this.state = {};
   }
 
-  componentWillMount() {
-    const categories = _.filter(data, ({id, parentId}) => {
-      return id === parentId;
-    });
-    const subcategories = _.filter(data, ({id, parentId}) => {
-      return id !== parentId;
-    });
-    this.setState({categories, subcategories});
-  }
-
-  handleMouseOver(e) {
-    this.setState({show: e.target.id});
-  }
-
-  handleOnClick(e) {
+  onClick(id) {
     if (this.state.show) {
       this.setState({show: ''});
     } else {
-      this.setState({show: e.target.id});
+      this.setState({show: id});
     }
+    this.setCategory(id);
+  }
+
+  onMouseOver(id) {
+    this.setState({show: id});
+  }
+
+  setCategory(id) {
+    const category = this.props.categories[id] || this.props.subcategories[id];
+    this.props.setCategory(category);
   }
 
   renderCategories() {
-    const categories = this.state.categories;
+    const categories = this.props.categories;
     return _.map(categories, ({id, name, nl}) => {
       return (
         <LinkContainer key={id} to={{pathname: `/shop/${name}`}}>
@@ -60,10 +56,10 @@ class Catalog extends Component {
             className='catalog-category'
             title={nl}
             id={name}
-            onMouseOver={this.handleMouseOver.bind(this)}
-            onClick={this.handleOnClick.bind(this)}
+            onMouseOver={() => this.onMouseOver(id)}
+            onClick={() => this.onClick(id)}
             onToggle={() => {}}
-            open={this.state.show === name}
+            open={this.state.show === id}
             noCaret
             style={pillStyle}
           >
@@ -75,16 +71,16 @@ class Catalog extends Component {
   }
 
   renderSubcategories(id) {
-    const subcategories = this.state.subcategories;
-    const filtered = _.filter(subcategories, ({parentId}) => {
-      return id === parentId;
-    });
-    return _.map(filtered, ({id, name, nl}) => {
+    const children = this.props.categories[id].subcategories;
+    const subcategories = this.props.subcategories;
+    return _.map(children, (id) => {
+      const {name, nl} = subcategories[id];
       return (
         <LinkContainer key={id} to={{pathname: `/shop/${name}`}}>
           <MenuItem
             className='catalog-subcategory'
-            onClick={this.handleOnClick.bind(this)}>
+            onClick={() => this.onClick(id)}
+          >
             {nl}
           </MenuItem>
         </LinkContainer>
@@ -115,4 +111,10 @@ class Catalog extends Component {
   }
 }
 
-export default Catalog;
+const mapStateToProps = ({catalog}) => ({
+  categories: catalog.categories,
+  subcategories: catalog.subcategories,
+  currentCategory: catalog.currentCategory
+});
+
+export default connect(mapStateToProps, actions)(Catalog);

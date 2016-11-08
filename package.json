@@ -78,6 +78,7 @@
     "karma-webpack": "^1.8.0",
     "mocha": "^3.1.2",
     "node-libs-browser": "^1.0.0",
+    "node-sass": "^3.11.2",
     "npm-install-webpack-plugin": "^4.0.4",
     "phantomjs-polyfill": "0.0.2",
     "phantomjs-prebuilt": "^2.1.13",
@@ -85,6 +86,7 @@
     "react-addons-test-utils": "^15.3.2",
     "react-dom": "^15.3.2",
     "redux-devtools": "^3.3.1",
+    "sass-loader": "^4.0.2",
     "sinon": "^1.17.6",
     "strip-loader": "^0.1.2",
     "style-loader": "^0.13.1",
@@ -98,6 +100,7 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "jquery": "^3.1.1",
+    "json-loader": "^0.5.4",
     "lodash": "^4.16.6",
     "react": "^15.3.2",
     "react-bootstrap": "^0.30.6",
@@ -106,6 +109,7 @@
     "react-router": "^3.0.0",
     "react-router-bootstrap": "^0.23.1",
     "redux": "^3.6.0",
+    "redux-logger": "^2.7.4",
     "redux-thunk": "^2.1.0"
   }
 }

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../actions/catalog';
 import _ from 'lodash';
 
 const bannerStyle = {
@@ -13,59 +15,67 @@ const titleStyle = {
   lineHeight: '120px'
 };
 
-import { data } from '../../data.js';
-
 class Banner extends Component {
   constructor(props) {
     super(props);
   }
 
-  componentWillMount() {
-    this.getCategory();
+  onClick(id) {
+    this.setCategory(id);
   }
 
-  componentWillUpdate() {
-    this.getCategory();
+  setCategory(id) {
+    const category = this.props.categories[id] || this.props.subcategories[id];
+    this.props.setCategory(category);
   }
 
-  getCategory() {
-    const {category} = this.props;
-    if (category === 'new') { return 'Nieuw'; }
-    const {parentId} = _.find(data, ({name}) => {
-      return name === category;
-    });
-    const {nl} = _.find(data, ({id}) => {
-      return id === parentId;
-    });
-    return nl;
-  }
-
-  renderSubcategories() {
-    const {category} = this.props;
-    if (category === 'new') { return; }
-    const {parentId} = _.find(data, ({name}) => {
-      return name === category;
-    });
-    const subcategories = _.filter(data, (item) => {
-      return parentId === item.parentId && item.id !== item.parentId;
-    });
-    return _.map(subcategories, ({id, nl}) => {
+  renderSubcategories(id) {
+    const subcategories = this.props.categories[id].subcategories;
+    return _.map(subcategories, id => {
+      const subcategory = this.props.subcategories[id];
       return (
-        <li key={id}><a href='#'>{nl}</a></li>
+        <li
+          className={this.props.currentCategory.id === id ? 'active' : ''}
+          key={subcategory.id}
+        >
+            <a
+              href='#'
+              onClick={() => this.onClick(id)}
+            >
+              {subcategory.nl}
+            </a>
+        </li>
       );
     });
   }
 
   render() {
+    const currentCategory = this.props.currentCategory;
+    const categoryId = currentCategory.parentId;
+    const categoryName = this.props.categories[categoryId].nl;
     return (
       <div className='banner' style={bannerStyle}>
-        <h1 className='text-center banner-header' style={titleStyle}>{this.getCategory()}</h1>
+        <h1 className='text-center banner-header' style={titleStyle}>{categoryName}</h1>
         <ul className='nav nav-pills nav-justified'>
-          {this.renderSubcategories()}
+          <li className={currentCategory.id === currentCategory.parentId ? 'active' : ''}>
+            <a
+              href='#'
+              onClick={() => this.onClick(categoryId)}
+            >
+              Alle {categoryName}
+            </a>
+          </li>
+          {this.renderSubcategories(categoryId)}
         </ul>
       </div>
     );
   }
 }
 
-export default Banner;
+const mapStateToProps = ({catalog}) => ({
+  categories: catalog.categories,
+  subcategories: catalog.subcategories,
+  currentCategory: catalog.currentCategory
+});
+
+export default connect(mapStateToProps, actions)(Banner);
