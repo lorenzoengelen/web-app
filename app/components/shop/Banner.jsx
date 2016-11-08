@@ -25,7 +25,7 @@ class Banner extends Component {
   }
 
   setCategory(id) {
-    const category = this.props.subcategories[id];
+    const category = this.props.categories[id] || this.props.subcategories[id];
     this.props.setCategory(category);
   }
 
@@ -50,12 +50,21 @@ class Banner extends Component {
   }
 
   render() {
-    const categoryId = this.props.currentCategory.parentId;
+    const currentCategory = this.props.currentCategory;
+    const categoryId = currentCategory.parentId;
     const categoryName = this.props.categories[categoryId].nl;
     return (
       <div className='banner' style={bannerStyle}>
         <h1 className='text-center banner-header' style={titleStyle}>{categoryName}</h1>
         <ul className='nav nav-pills nav-justified'>
+          <li className={currentCategory.id === currentCategory.parentId ? 'active' : ''}>
+            <a
+              href='#'
+              onClick={() => this.onClick(categoryId)}
+            >
+              Alle {categoryName}
+            </a>
+          </li>
           {this.renderSubcategories(categoryId)}
         </ul>
       </div>
