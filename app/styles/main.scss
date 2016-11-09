@@ -36,7 +36,7 @@ header {
         border: 1px solid $grey-border;
       }
       &:focus {
-        width: 90%;
+        // width: 90%;
         &:hover {
           border: 0px;
           border-bottom: 2px solid $orange;
@@ -52,7 +52,7 @@ header {
   .catalog-category {
     .dropdown-toggle {color: $grey;}
     a:focus {
-      width: 90%;
+      // max-width: 90%;
       color: $orange;
       background-color: $white;
       border-bottom: 2px solid $orange;
@@ -60,7 +60,7 @@ header {
     }
     &.active {
       .dropdown-toggle {
-        width: 90%;
+        // width: 90%;
         color: $orange;
         background-color: $white;
         border-bottom: 2px solid $orange;
@@ -68,7 +68,7 @@ header {
       }
     }
     &.open {
-      a {width: 90%;}
+      // a {width: 90%;}
       .dropdown-toggle {
         color: $orange;
         background-color: $white;
