@@ -19,6 +19,10 @@ html {
 header {
   &.nav, &.navbar-default {
     background-color: $white;
+    border-radius: 0px;
+    border: 0px solid $grey-border;
+    border-bottom: 1px solid $grey-border;
+    margin-bottom: -1px;
   }
 }
 
@@ -31,20 +35,30 @@ header {
     a {
       color: $grey;
       border-radius: 0px;
+      border-left: 1px solid $white;
+      border-right: 1px solid $white;
+      border-bottom: 2px solid $white;
       &:hover {
         color: $orange;
         background-color: $white;
         border: 1px solid $grey-border;
+
       }
       &:focus {
         // width: 90%;
         &:hover {
           border: 0px;
           border-bottom: 2px solid $orange;
+          border-top: 1px solid $grey-border;
+          border-left: 1px solid $grey-border;
+          border-right: 1px solid $grey-border;
         }
         color: $orange;
         background-color: $white;
         border-bottom: 2px solid $orange;
+        border-top: 1px solid $grey-border;
+        border-left: 1px solid $grey-border;
+        border-right: 1px solid $grey-border;
         border-radius: 0px;
       }
     }
@@ -52,11 +66,19 @@ header {
 
   .catalog-category {
     .dropdown-toggle {color: $grey;}
+    a {
+      border-left: 1px solid $white;
+      border-right: 1px solid $white;
+      border-bottom: 2px solid $white;
+    }
     a:focus {
       // max-width: 90%;
       color: $orange;
       background-color: $white;
       border-bottom: 2px solid $orange;
+      border-top: 1px solid $grey-border;
+      border-left: 1px solid $white;
+      border-right: 1px solid $white;
       border-radius: 0px;
     }
     &.active {
@@ -65,6 +87,9 @@ header {
         color: $orange;
         background-color: $white;
         border-bottom: 2px solid $orange;
+        border-top: 1px solid $grey-border;
+        border-left: 1px solid $white;
+        border-right: 1px solid $white;
         border-radius: 0px;
       }
     }
