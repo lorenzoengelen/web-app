@@ -1,3 +1,83 @@
-.nav {
-  background-color: blue;
+// COLORS
+$white:                 #fff;
+$grey:                  #595a5c;
+$grey-light:            #acacad;
+$grey-border:           #ccc;
+// $grey-dark:             #89949B;
+$orange:                #f36d22;
+
+// TYPOGRAPHY
+$font-family-base:      'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+// COMPONENTS
+html {
+  font-family: $font-family-base;
+}
+
+// CATALOG
+.catalog {
+
+  font-family: $font-family-base;
+
+  .catalog-new {
+    a {
+      color: $grey;
+      &:hover {
+        color: $orange;
+        background-color: $white;
+        border: 1px solid $grey-border;
+        border-radius: 0px;
+      }
+    }
+  }
+
+  .catalog-category {
+    .dropdown-toggle {color: $grey;}
+    &.active {
+      .dropdown-toggle {
+        color: $orange;
+        background-color: $white;
+        border-bottom: 2px solid $orange;
+        border-bottom-length: 5px;
+        border-radius: 0px;
+      }
+    }
+    &.open {
+      .dropdown-toggle {
+        color: $orange;
+        background-color: $white;
+        border: 1px solid $grey-border;
+        border-radius: 0px;
+      }
+      .dropdown-menu {
+        border: 1px solid $grey-border;
+        border-radius: 0px;
+        margin: -1px 0px;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        .catalog-subcategory {
+          color: $grey;
+          &:hover a {
+            color: $orange;
+            background-color: $white;
+          }
+          &.active a {
+            color: $orange;
+            background-color: $white;
+          }
+        }
+      }
+    }
+  }
+
+  .catalog-sell {
+    a {
+      color: $white;
+      background-color: $orange;
+      border-radius: 0px;
+      // border-bottom: 2px solid $orange;
+      &:hover {background-color: $orange;}
+    }
+  }
 }
