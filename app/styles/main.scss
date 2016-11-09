@@ -29,10 +29,20 @@ header {
   .catalog-new {
     a {
       color: $grey;
+      border-radius: 0px;
       &:hover {
         color: $orange;
         background-color: $white;
         border: 1px solid $grey-border;
+      }
+      &:focus {
+        &:hover {
+          border: 0px;
+          border-bottom: 2px solid $orange;
+        }
+        color: $orange;
+        background-color: $white;
+        border-bottom: 2px solid $orange;
         border-radius: 0px;
       }
     }
@@ -40,12 +50,17 @@ header {
 
   .catalog-category {
     .dropdown-toggle {color: $grey;}
+    a:focus {
+      color: $orange;
+      background-color: $white;
+      border-bottom: 2px solid $orange;
+      border-radius: 0px;
+    }
     &.active {
       .dropdown-toggle {
         color: $orange;
         background-color: $white;
         border-bottom: 2px solid $orange;
-        border-bottom-length: 5px;
         border-radius: 0px;
       }
     }
@@ -84,7 +99,7 @@ header {
       background-color: $orange;
       border-radius: 0px;
       // border-bottom: 2px solid $orange;
-      &:hover {background-color: $orange;}
+      &:hover, &:focus {background-color: $orange;}
     }
   }
 }
