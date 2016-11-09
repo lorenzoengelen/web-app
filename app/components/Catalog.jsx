@@ -6,23 +6,6 @@ import { Link } from 'react-router';
 import { LinkContainer } from 'react-router-bootstrap';
 import _ from 'lodash';
 
-const sellButtonStyle = {
-  backgroundColor: '#F36D22',
-  borderRadius: '0'
-};
-
-const catalogStyle = {
-  backgroundColor: 'white',
-  borderTop: 'solid 1px #acacad',
-  borderBottom: 'solid 1px #acacad',
-  width: '100%',
-  padding: '5px 0'
-};
-
-const pillStyle = {
-  color: '#595a5c'
-};
-
 class Catalog extends Component {
   constructor(props) {
     super(props);
@@ -61,7 +44,6 @@ class Catalog extends Component {
             onToggle={() => {}}
             open={this.state.show === id}
             noCaret
-            style={pillStyle}
           >
           {this.renderSubcategories(id)}
           </NavDropdown>
@@ -90,22 +72,20 @@ class Catalog extends Component {
 
   render() {
     return (
-      <div style={catalogStyle}>
-        <div className='container catalog'>
-          <Nav bsStyle='pills' justified>
+      <div className='container catalog'>
+        <Nav bsStyle='pills' justified>
 
-            <li className='catalog-new'>
-              <Link to={'/shop/new'} style={pillStyle}>Nieuw</Link>
-            </li>
+          <li className='catalog-new'>
+            <Link to={'/shop/new'}>Nieuw</Link>
+          </li>
 
-            {this.renderCategories()}
+          {this.renderCategories()}
 
-            <li className='catalog-sell active'>
-              <Link to={'/sell'} style={sellButtonStyle}>Verkopen</Link>
-            </li>
+          <li className='catalog-sell'>
+            <Link to={'/sell'}>Verkopen</Link>
+          </li>
 
-          </Nav>
-        </div>
+        </Nav>
       </div>
     );
   }
