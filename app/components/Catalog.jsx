@@ -37,7 +37,7 @@ class Catalog extends Component {
         <LinkContainer key={id} to={{pathname: `/shop/${name}`}}>
           <NavDropdown
             className='catalog-category'
-            title={nl}
+            title={nl.toUpperCase()}
             id={name}
             onMouseOver={() => this.onMouseOver(id)}
             onClick={() => this.onClick(id)}
@@ -76,13 +76,13 @@ class Catalog extends Component {
         <Nav bsStyle='pills' justified>
 
           <li className='catalog-new'>
-            <Link to={'/shop/new'}>Nieuw</Link>
+            <Link to={'/shop/new'}>NIEUW</Link>
           </li>
 
           {this.renderCategories()}
 
           <li className='catalog-sell'>
-            <Link to={'/sell'}>Verkopen</Link>
+            <Link to={'/sell'}>VERKOPEN</Link>
           </li>
 
         </Nav>
