@@ -14,6 +14,13 @@ html {
   font-family: $font-family-base;
 }
 
+// HEADER 
+header {
+  &.nav, &.navbar-default {
+    background-color: $white;
+  }
+}
+
 // CATALOG
 .catalog {
 
