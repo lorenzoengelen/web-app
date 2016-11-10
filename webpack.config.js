@@ -18,6 +18,7 @@ const PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build'),
   style: path.join(__dirname, 'app/styles/main.scss'),
+  images: path.join(__dirname, 'app/assets/img'),
   test: path.join(__dirname, 'test'),
   bootstrap: path.join(__dirname, 'node_modules/bootstrap/dist/css/bootstrap.min.css')
 };
@@ -32,7 +33,8 @@ const common = {
   },
   output: {
     path: PATHS.build,
-    filename: '[name].js'
+    filename: '[name].js',
+    publicPath: '/'
   },
   module: {
     preLoaders: [
@@ -58,13 +60,19 @@ const common = {
         loaders: ['babel?cacheDirectory'], // enable caching for improved performance
         include: PATHS.app
       },
+      // images
+      // {
+      //   test: /\.(jpg|png)$/,
+      //   loader: 'file-loader',
+      //   include: PATHS.images
+      // },
       // bootstrap loaders
       {
         test: /\.scss$/,
         loaders: ['style', 'css', 'postcss', 'sass'],
       },
       {
-        test: /\.(woff|woff2|ttf|svg|eot|jpe?g)/,
+        test: /\.(woff|woff2|ttf|svg|eot|png|jpe?g)/,
         loader: 'url?limit=100000',
       },
       {
