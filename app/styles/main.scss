@@ -19,7 +19,7 @@ html {
 header {
   height: 100px;
   &.nav, &.navbar-default {
-    background-color: $white;
+    background-color: transparent;
     border-radius: 0px;
     border: 0px solid $grey-border;
     border-bottom: 1px solid $grey-border;
@@ -29,7 +29,8 @@ header {
 
 // CATALOG
 .catalog {
-
+  width: 100%;
+  background-color: $white;
   font-family: $font-family-base;
 
   .catalog-new {

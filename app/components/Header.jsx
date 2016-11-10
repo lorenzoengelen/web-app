@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 
-const headerStyles = {
-  color: 'white',
-  backgroundColor: 'white'
-};
-
 class Header extends Component {
   render() {
     return (
-      <header className='navbar navbar-default' styles={headerStyles}>
+      <header className='navbar navbar-default'>
         <div className='container'>
 
           <div className='navbar-header'>
