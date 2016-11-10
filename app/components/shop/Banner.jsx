@@ -4,11 +4,7 @@ import * as actions from '../../actions/catalog';
 import _ from 'lodash';
 
 const bannerStyle = {
-  backgroundImage: 'url(' + require('../../assets/img/office.jpg') + ')',
-  backgroundSize: 'cover',
-  backgroundRepeat: 'no-repeat',
-  height: '200px',
-  color: 'white'
+  backgroundImage: 'url(' + require('../../assets/img/banner/office.jpg') + ')',
 };
 
 const titleStyle = {
