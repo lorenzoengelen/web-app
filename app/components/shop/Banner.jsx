@@ -3,8 +3,28 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/catalog';
 import _ from 'lodash';
 
+import beds from '../../assets/img/banner/beds.jpg';
+import chairs from '../../assets/img/banner/chairs.jpg';
+import decoration from '../../assets/img/banner/decor.jpg';
+import lighting from '../../assets/img/banner/lighting.jpg';
+import newCat from '../../assets/img/banner/new.jpg';
+import sofas from '../../assets/img/banner/sofas.jpg';
+import storage from '../../assets/img/banner/storage.jpg';
+import tables from '../../assets/img/banner/tables.jpg';
+
+const categories = {
+  beds: beds,
+  chairs: chairs,
+  decoration: decoration,
+  lighting: lighting,
+  new: newCat,
+  sofas: sofas,
+  storage: storage,
+  tables: tables
+};
+
 const bannerStyle = {
-  backgroundImage: 'url(' + require('../../assets/img/banner/office.jpg') + ')',
+  backgroundImage: 'url(' + require('../../assets/img/banner/chairs.jpg') + ')'
 };
 
 const titleStyle = {
@@ -48,9 +68,13 @@ class Banner extends Component {
   render() {
     const currentCategory = this.props.currentCategory;
     const categoryId = currentCategory.parentId;
+    const categoryParent = this.props.categories[categoryId].name;
     const categoryName = this.props.categories[categoryId].nl;
+    const background = {
+      backgroundImage: `url(${categories[categoryParent]})`
+    };
     return (
-      <div className='banner' style={bannerStyle}>
+      <div className='banner' style={background}>
         <h1 className='text-center banner-header' style={titleStyle}>{categoryName}</h1>
         <ul className='nav nav-pills nav-justified'>
           <li className={currentCategory.id === currentCategory.parentId ? 'active' : ''}>
