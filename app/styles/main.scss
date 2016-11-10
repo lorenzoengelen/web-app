@@ -17,6 +17,7 @@ html {
 
 // HEADER 
 header {
+  height: 100px;
   &.nav, &.navbar-default {
     background-color: $white;
     border-radius: 0px;
